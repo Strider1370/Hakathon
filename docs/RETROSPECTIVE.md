@@ -26,6 +26,15 @@
    (※ Windows 방화벽 인바운드 허용·공유기 AP격리 해제는 **환경 측**이라 코드로 못 박지 못함 — 안내만. 더 확실한 공유는 배포 URL.)
    → 반영 위치: `presentation/slidev` dev 스크립트(`slidev --host`) + README 실행표.
 
+### 속도 개선 거리 (품질 손해 없이 그냥 빨라지는 것)
+
+8. **발표 엔진 Slidev 단일화 — Notion 정적 HTML은 아예 폐기.** generator(`generate-static-html`)·serve(notion)·`presentation:static` 경로와 산출물을 키트에서 **삭제**(비활성이 아니라 제거). 이중 렌더러 때문에 생긴 **슬롯 필드명 불일치**(레이아웃마다 `heading/body`·`num/body`·`title/desc`)도 함께 사라짐 → 남는 Slidev 렌더러 기준 **레이아웃별 슬롯 필드맵 한 장**으로 문서화. `v-clicks` 기본값도 재고(`clicks:false`를 기본으로).
+   → 반영 위치: `presentation/generator/*`(notion 제거) + `reference/04`.
+9. **시각 검증 도구를 키트에 기본 포함.** 헤드리스에서 미리보기 스크린샷이 막히고 Slidev dev는 charset 깨지므로, **Playwright 캡처 스크립트(`scripts/shoot.mjs` 류) + "dev 대신 `slidev build` dist 정적 서빙"** 을 키트 기본 제공. (이번엔 매번 직접 셋업했음.)
+   → 반영 위치: `scripts/`(캡처) + `reference/04` §7.
+10. **`reference/06` 음성 모델·엔드포인트 최신화(2026-06 확인값).** 대화 `gpt-realtime-2`(이미 있음) + **전사 `gpt-realtime-whisper`**(세션 `audio.input.transcription.model`, `language:'ko'`) + 통역 `gpt-realtime-translate`. 임시키 발급은 **`POST /v1/realtime/client_secrets`** (body `{session:{type:'realtime',model}}` → `value` `ek_…`), **구 `/v1/realtime/sessions`는 폐기**(따라 하면 `Invalid URL`). 배경소음 과민하면 `server_vad`+`threshold`. (모델·엔드포인트는 자주 바뀌니 "값"보다 "재확인 링크"를 함께.)
+   → 반영 위치: `reference/06` §B-1(모델)·§B-2(임시키 엔드포인트)·§B-5(VAD).
+
 ---
 
 ## 1. ⭐ ChatGPT Realtime 음성 연동
