@@ -654,7 +654,12 @@ visibleSlides.forEach((s, idx) => {
   blocks.push(body.join("\n").replace(/\n{3,}/g, "\n\n").trim() + "\n");
 });
 
-const md = head.join("\n") + blocks.join("\n");
+let md = head.join("\n") + blocks.join("\n");
+
+// meta.clicks === false → 점진 표시(v-clicks) 끄고 모든 내용을 즉시 노출.
+if (deck.meta && deck.meta.clicks === false) {
+  md = md.replace(/<\/?v-clicks>/g, "").replace(/\sv-click\b/g, "");
+}
 
 writeFileSync(outPath, md, "utf8");
 console.log(BANNER + " 생성 완료: " + outPath);

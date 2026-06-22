@@ -210,8 +210,10 @@ const LAYOUT_RENDERERS = {
       .map((f, i) => {
         const o = f && typeof f === "object" ? f : { heading: itemText(f) };
         const ico = o.icon != null ? esc(o.icon) : String(i + 1);
-        const head = o.heading != null ? leaf(subAddr(id, "features", i + ".heading"), o.heading, "h3") : "";
-        const body = o.body != null ? leaf(subAddr(id, "features", i + ".body"), o.body, "p") : "";
+        const headVal = o.heading ?? o.title; // title/desc 로 써도 렌더되게 폴백
+        const bodyVal = o.body ?? o.desc;
+        const head = headVal != null ? leaf(subAddr(id, "features", i + ".heading"), headVal, "h3") : "";
+        const body = bodyVal != null ? leaf(subAddr(id, "features", i + ".body"), bodyVal, "p") : "";
         return '<div class="block"><div class="ico">' + ico + "</div>" + head + body + "</div>";
       })
       .join("");

@@ -4,7 +4,8 @@
     "engine": "slidev",
     "title": "받던 복지, 끊기기 전에",
     "language": "ko",
-    "presentationMinutes": 5
+    "presentationMinutes": 5,
+    "clicks": false
   },
   "slides": [
     {
@@ -14,7 +15,7 @@
         "eyebrow": "복지 끊김 점검",
         "title": "받던 복지, 끊기기 전에",
         "subtitle": "어르신이 말로 점검하는 자격 변동 비서",
-        "footnote": "음성 · KRDS · 공공데이터"
+        "footnote": "음성(gpt-realtime-2) · KRDS · 공공데이터 16,000건"
       },
       "durationSeconds": 20,
       "speakerNotes": "복지의 진짜 문제는 못 받는 게 아니라, 받던 게 끊기는 겁니다. 우리는 그걸 끊기기 전에, 말로 점검합니다."
@@ -25,12 +26,12 @@
       "content": {
         "title": "복지는 받을 때가 아니라, 끊길 때 아프다",
         "items": [
-          { "title": "소득·가구가 바뀐다", "desc": "일을 시작하거나 가족과 합치면 자격이 변한다" },
-          { "title": "그대로 끊긴다", "desc": "갱신·서류를 놓치면 받던 게 멈춘다" },
-          { "title": "본인은 가장 늦게 안다", "desc": "환수 통지로 안다 — 5년 1,140억, 가산세·지급제한" }
+          { "title": "소득·가구가 바뀌면 자격도 바뀐다", "desc": "일을 시작하거나 가족과 합치면 소득인정액이 오른다 — 본인은 신고 의무조차 모른다" },
+          { "title": "갱신·서류를 놓치면 그대로 끊긴다", "desc": "에너지바우처는 해마다 다시 신청 — 기간을 놓치면 그 해는 0원" },
+          { "title": "본인은 환수 통지로 가장 늦게 안다", "desc": "최근 5년 부적격 지급 1,140억 원 + 가산세 + 2~5년 지급 제한" }
         ]
       },
-      "durationSeconds": 25,
+      "durationSeconds": 30,
       "speakerNotes": "소득이 늘거나 가족과 합치면 자격이 바뀝니다. 본인은 모르고 지내다 환수 통지로 압니다. 최근 5년 부적격 지급이 1,140억, 가산세에 지급 제한까지 붙습니다."
     },
     {
@@ -38,21 +39,21 @@
       "semanticLayout": "contrast",
       "content": {
         "title": "방향이 반대다",
-        "lead": "받을 것을 찾아주는 서비스는 많다. 끊길 위험을 경고하는 건 없다.",
+        "lead": "받을 것을 찾아주는 서비스는 많다. 받던 게 끊길 위험을 경고하는 건 없다.",
         "leftLabel": "기존 (복지로·보조금24·토스)",
         "left": [
-          { "title": "받을 것 안내", "desc": "신규 신청·상향 중심" },
-          { "title": "앱·로그인·타이핑 전제", "desc": "어르신은 배제" },
-          { "title": "판정은 백오피스에", "desc": "당사자에겐 안 보임" }
+          { "title": "받을 것만 안내", "desc": "신규 신청·마감 알림 중심 — 끊김은 빈칸" },
+          { "title": "앱·로그인·타이핑 전제", "desc": "고령층 디지털화 70.7%, 입력에서 막힌다" },
+          { "title": "판정은 백오피스에", "desc": "행복e음 안에 갇혀 당사자엔 안 보임" }
         ],
         "rightLabel": "우리",
         "right": [
-          { "title": "끊길 위험 경고", "desc": "유지·갱신 중심" },
-          { "title": "말로 점검", "desc": "어르신이 음성으로" },
-          { "title": "판정을 당사자 손에", "desc": "끊기기 전에 미리" }
+          { "title": "끊길 위험을 먼저 경고", "desc": "유지·갱신을 점검해 끊기기 전에" },
+          { "title": "말로 점검", "desc": "타이핑 못 해도 음성·자막으로" },
+          { "title": "판정을 당사자 손에", "desc": "공식 출처 근거로 직접 확인" }
         ]
       },
-      "durationSeconds": 25,
+      "durationSeconds": 30,
       "speakerNotes": "받을 것 찾아주는 서비스는 많습니다. 복지멤버십도 그렇죠. 그런데 전부 방향이 받기입니다. 끊길 위험을 경고하는 건 없습니다. 방향을 뒤집었습니다."
     },
     {
@@ -71,9 +72,9 @@
       "content": {
         "title": "세 단계를 한 흐름으로",
         "features": [
-          { "title": "말로 문진", "desc": "받는 혜택을 찾아준다" },
-          { "title": "변동 점검", "desc": "끊길 위험을 짚는다" },
-          { "title": "본인인증", "desc": "추정을 정확으로" }
+          { "title": "말로 문진", "desc": "쉬운 질문 9개를 음성·자막으로. 무엇을 받는지 몰라도 해당 혜택을 찾아준다" },
+          { "title": "변동 점검", "desc": "받는 혜택 × 소득·가구 변동 → 끊길 위험을 코드가 판정. 근거·D-day·필요 서류까지" },
+          { "title": "본인인증", "desc": "공공마이데이터 연계로 추정을 정확한 소득인정액과 끊길 날짜로" }
         ]
       },
       "durationSeconds": 20,
@@ -85,18 +86,18 @@
       "content": {
         "title": "말 한마디면 된다",
         "callout": [
-          { "title": "\"일 시작했고, 아들과 합쳐 살아요\"", "desc": "음성으로 상황을 말한다" },
+          { "title": "\"일 시작했고, 아들과 합쳐 살아요\"", "desc": "음성으로 상황을 말하면 자막으로도 보인다" },
           { "title": "🔴 기초연금·의료급여 끊길 위험", "desc": "받기가 아니라, 끊김을 먼저 짚는다" },
-          { "title": "D-day · 해야 할 일 · 서류", "desc": "그래서 무엇을 언제 하나" }
+          { "title": "D-day · 해야 할 일 · 서류", "desc": "그래서 무엇을 언제, 어디에 내나" }
         ],
         "points": [
-          { "title": "판정은 코드", "desc": "AI는 듣고, 코드가 판정" },
+          { "title": "판정은 코드", "desc": "AI는 듣고, 코드가 결정" },
           { "title": "출처는 공식 URL", "desc": "보건복지부·국세청·법령" },
           { "title": "음성 + 자막", "desc": "어르신 이중 확인" }
         ]
       },
       "assets": { "image": "presentation/assets/demo-risk.png" },
-      "durationSeconds": 10,
+      "durationSeconds": 15,
       "speakerNotes": "방금 보신 것: 말 한마디에 끊길 위험이 먼저 떴습니다. 받기가 아니라 끊김을요."
     },
     {
@@ -105,53 +106,82 @@
       "content": {
         "title": "AI는 듣고, 코드가 판정한다",
         "steps": [
-          { "title": "음성 이해", "desc": "비정형 말 → 슬롯 추출 (strict 함수호출)" },
-          { "title": "결정론 판정", "desc": "변동 → 공식 끊김 사유 매칭 (코드)" },
-          { "title": "공식 출처 카드", "desc": "단정 대신 근거 + URL" }
+          { "title": "음성 이해", "desc": "비정형 말 → 점검 슬롯으로 (strict 함수호출, 환각 차단)" },
+          { "title": "결정론 판정", "desc": "받는 혜택 × 변동 → 공식 끊김 사유 매칭 (규칙 코드)" },
+          { "title": "공식 출처 카드", "desc": "단정 대신 근거 + gov.kr·법령 URL" }
         ],
-        "result": "환각 없는 판정 — 틀려도 엉뚱한 결과가 안 나간다"
+        "result": "AI는 입력만, 판정은 코드 — 틀려도 엉뚱한 결과가 안 나간다"
       },
       "durationSeconds": 25,
       "speakerNotes": "AI는 듣고 값만 뽑습니다. 자격 판정은 결정론 코드가 합니다. 그래서 똑똑함이 아니라 정직함이 차별점입니다."
     },
     {
       "id": "slide-08",
+      "semanticLayout": "card-grid",
+      "content": {
+        "title": "근거 위에 — 공공데이터",
+        "cards": [
+          { "title": "보조금24 10,957건", "desc": "공공서비스 전수 검색 모집단" },
+          { "title": "복지서비스 5,021건", "desc": "중앙·지자체 복지 카탈로그" },
+          { "title": "대표 12개 정밀", "desc": "보건복지부·국세청·법령정보 큐레이션" },
+          { "title": "출처 URL 동봉", "desc": "gov.kr·복지로·국가법령정보" }
+        ]
+      },
+      "durationSeconds": 20,
+      "speakerNotes": "검색 모집단은 보조금24와 복지서비스 16,000건 전수입니다. 그 위에 어르신 관련 대표 12개는 공식 출처에서 자격·갱신·서류를 직접 큐레이션했고, 출처 URL을 함께 보여줍니다."
+    },
+    {
+      "id": "slide-09",
       "semanticLayout": "big-number",
       "content": {
         "label": "변동 미신고 부적격 지급, 최근 5년",
         "number": "1,140억",
-        "caption": "해외 ex-parte 자동갱신은 갱신율 +28%p (Health Affairs 2025)"
+        "caption": "해외 ex-parte 자동갱신은 절차상 탈락을 막아 갱신율 +28%p (Health Affairs 2025)"
       },
       "durationSeconds": 20,
       "speakerNotes": "문제의 크기는 5년 1,140억. 해외에선 정부 데이터로 미리 점검하는 ex-parte 방식이 갱신율을 28%p 올렸습니다. 우리가 그걸 당사자 편에서 합니다."
     },
     {
-      "id": "slide-09",
+      "id": "slide-10",
       "semanticLayout": "limitation-guardrail",
       "content": {
         "title": "정직하게",
         "limitations": [
-          { "title": "자격은 추정", "desc": "정확한 소득인정액은 본인인증 필요" },
-          { "title": "대표 12개 정밀", "desc": "나머지는 잠재 후보로 표시" },
-          { "title": "음성 폴백", "desc": "타이핑·스크린샷 백업 필수" }
+          { "title": "자격은 추정", "desc": "정확한 소득인정액은 본인인증 후에" },
+          { "title": "대표 12개만 정밀", "desc": "나머지 16,000건은 잠재 후보로 표시" },
+          { "title": "음성은 폴백 필수", "desc": "소음·권한 대비 타이핑·스크린샷 백업" }
         ],
         "guardrails": [
           { "title": "판정은 결정론 코드", "desc": "AI 자유분류 금지" },
-          { "title": "단정 금지", "desc": "공식 확인 안내" },
-          { "title": "정부 연계는 목업", "desc": "공공마이데이터 가정" }
+          { "title": "단정 금지", "desc": "끊길 위험 + 공식 확인 안내" },
+          { "title": "정부 연계는 목업", "desc": "공공마이데이터 연계를 가정" }
         ]
       },
       "durationSeconds": 25,
       "speakerNotes": "정직하게 짚습니다. 로그인 전 자격은 추정이고, 정확한 값은 본인인증이 필요합니다. 정부 연계 부분은 공공마이데이터를 가정한 목업입니다."
     },
     {
-      "id": "slide-10",
+      "id": "slide-11",
+      "semanticLayout": "expansion-map",
+      "content": {
+        "title": "여기서 더",
+        "tiers": [
+          { "title": "curated 룰 확대", "desc": "대표 12개 → 핵심 수급 제도 전반" },
+          { "title": "공공마이데이터 실연계", "desc": "목업 → 동의 기반 실제 소득·재산" },
+          { "title": "국민비서 푸시 알림", "desc": "끊길 D-day를 먼저 알려준다" }
+        ]
+      },
+      "durationSeconds": 15,
+      "speakerNotes": "확장은 셋입니다. 큐레이션 룰을 늘리고, 공공마이데이터를 실연계하고, 국민비서로 끊길 날짜를 먼저 알립니다."
+    },
+    {
+      "id": "slide-12",
       "semanticLayout": "closing",
       "content": {
         "title": "받는 걸 돕는 복지는 많습니다",
         "subtitle": "끊기지 않게 지키는 복지는, 여기서 시작합니다",
         "cta": "라이브 데모",
-        "tags": ["어르신", "음성", "끊김 경고"],
+        "tags": ["어르신", "음성 점검", "끊김 경고", "공공데이터"],
         "contact": "github.com/Strider1370/Hakathon"
       },
       "durationSeconds": 20,
