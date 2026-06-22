@@ -39,6 +39,9 @@ blob-report/
 # 모바일 점검 캡처(로컬 검수용, 재생성 가능: node scripts/shoot.mjs)
 .shots/
 
+# APK 빌드 산출물(서버에서 재빌드 — reference/05 §5)
+*.apk
+
 # OS/editor
 .DS_Store
 Thumbs.db

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">지킴e</string>
+    <string name="title_activity_main">지킴e</string>
+    <string name="package_name">kr.jikime.app</string>
+    <string name="custom_url_scheme">kr.jikime.app</string>
+</resources>
