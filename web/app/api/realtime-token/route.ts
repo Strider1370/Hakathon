@@ -12,6 +12,10 @@ export async function POST() {
   // GPT-5급 추론 realtime(2026-05). 전사는 신규 스트리밍 STT. env로 교체 가능.
   const model = process.env.OPENAI_REALTIME_MODEL || 'gpt-realtime-2';
   const transcribeModel = process.env.OPENAI_TRANSCRIBE_MODEL || 'gpt-realtime-whisper';
+  // 배경소음 민감도 조절: threshold ↑ = 더 또렷한 말에만 반응(둔감). silence_ms ↑ = 끝났다고 판단까지 더 기다림.
+  // .env.local 에서 OPENAI_VAD_THRESHOLD(0~1, 기본 0.7), OPENAI_VAD_SILENCE_MS(기본 700)로 조정.
+  const vadThreshold = Number(process.env.OPENAI_VAD_THRESHOLD ?? '0.7');
+  const vadSilenceMs = Number(process.env.OPENAI_VAD_SILENCE_MS ?? '700');
   try {
     const res = await fetch('https://api.openai.com/v1/realtime/client_secrets', {
       method: 'POST',
@@ -23,7 +27,13 @@ export async function POST() {
           audio: {
             input: {
               transcription: { model: transcribeModel, language: 'ko' }, // 사용자 음성→텍스트(한국어)
-              turn_detection: { type: 'semantic_vad', eagerness: 'low' }, // 어르신: 머뭇거려도 안 끊김
+              // server_vad: threshold로 배경소음 민감도 직접 제어(높을수록 둔감).
+              turn_detection: {
+                type: 'server_vad',
+                threshold: vadThreshold,
+                prefix_padding_ms: 300,
+                silence_duration_ms: vadSilenceMs,
+              },
               noise_reduction: { type: 'near_field' }, // 폰·헤드셋 잡음 감소
             },
             output: { voice: 'marin' },
