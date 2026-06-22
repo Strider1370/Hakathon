@@ -1,35 +1,28 @@
-import Image from 'next/image';
-import { Display, Body, Badge } from '@krds-ui/core';
+import { Badge } from '@krds-ui/core';
+import { benefitOptions } from '@/lib/benefits';
+import { CheckForm } from '@/components/CheckForm';
 
-// ─────────────────────────────────────────────────────────────
-// 빈 스캐폴드 홈. 주제가 정해지면 이 파일을 새로 짜라.
-// 폼·지도 등 부품은 기본 포함돼 있지 않다 — 필요하면 그때 추가(말로 요청하면 금방).
-// 배너는 기본 이미지(/hero-banner.png). 주제 맞춤으로 바꾸려면: npm run generate-banner -- --topic "<주제>"
-// ─────────────────────────────────────────────────────────────
-
+// 끊김 점검 홈. 상황 변동을 고르면 받던 혜택 중 끊길 위험을 코드가 판정해 카드로 보여준다.
 export default function Home() {
+  const benefits = benefitOptions();
+
   return (
     <>
-      <section className="relative overflow-hidden bg-primary-5">
-        <Image src="/hero-banner.png" alt="" aria-hidden fill priority unoptimized className="object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-5 via-primary-5/85 to-primary-5/20" />
-        <div className="relative mx-auto max-w-container px-4 py-12 md:py-16">
-          <Badge label="KRDS 스타터 키트" variant="primary" size="small" />
-          <Display size="s" color="gray-90" className="mt-3 !text-heading-l md:!text-display-s">
-            한국 공공 서비스 해커톤 스타터
-          </Display>
-          <Body size="l" color="gray-70" className="mt-3 max-w-xl">
-            Next.js + KRDS 가 셋업된 빈 스캐폴드입니다. 새 주제를 받으면 이 화면부터 새로 만드세요.
-          </Body>
+      <section className="bg-primary-5">
+        <div className="mx-auto max-w-container px-4 py-10 md:py-14">
+          <Badge label="복지 끊김 점검" variant="primary" size="small" />
+          <h1 className="mt-3 text-heading-l font-bold leading-tight text-gray-90 md:text-display-s">
+            받던 복지, <span className="text-primary-60">끊기기 전에</span> 점검하세요
+          </h1>
+          <p className="mt-3 max-w-xl text-body-l text-gray-70">
+            소득·가구 같은 상황이 바뀌면 받던 혜택이 끊기거나 환수될 수 있어요. 달라진 점을
+            고르면, 끊길 위험과 지금 해야 할 일을 짚어드립니다.
+          </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-container px-4 py-12">
-        <div className="rounded-krds border border-dashed border-gray-30 bg-gray-5 px-4 py-6">
-          <Body size="m" color="gray-70">
-            여기에 주제 화면을 만드세요. 입력 폼·지도·결과 카드 같은 부품은 필요할 때 추가하면 됩니다.
-          </Body>
-        </div>
+      <section className="mx-auto max-w-container px-4 py-8 md:py-10">
+        <CheckForm benefits={benefits} />
       </section>
     </>
   );
