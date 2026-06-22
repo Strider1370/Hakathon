@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="font-sans text-body-m text-gray-90">
+      <body className="bg-gray-5 font-sans text-body-m text-gray-90">
         <Header />
         <main id="main" className="min-h-[60vh]">
           {children}

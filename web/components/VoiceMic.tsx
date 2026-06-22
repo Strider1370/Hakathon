@@ -100,7 +100,7 @@ export function VoiceMic({
           <button
             type="button"
             onClick={start}
-            className="mt-3 w-full rounded-krds bg-primary-50 px-6 py-4 text-heading-s font-bold text-white hover:bg-primary-60"
+            className="mt-3 w-full rounded-krds bg-primary-50 px-6 py-4 text-body-l font-bold text-white hover:bg-primary-60"
           >
             🎤 음성으로 시작하기
           </button>

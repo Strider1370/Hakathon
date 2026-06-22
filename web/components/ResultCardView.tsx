@@ -36,7 +36,7 @@ export function ResultCardView({ card }: { card: ResultCard }) {
           <span className={`inline-block rounded-full px-2.5 py-0.5 text-label-s font-bold ${s.tag}`}>
             {s.icon} {s.tagText}
           </span>
-          <h3 className="mt-2 text-heading-s font-bold text-gray-90">{card.name}</h3>
+          <h3 className="mt-2 text-heading-s-mobile font-bold text-gray-90 md:text-heading-s">{card.name}</h3>
           <p className="mt-1 text-body-l text-gray-80">{card.headline}</p>
         </div>
       </div>

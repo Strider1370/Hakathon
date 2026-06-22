@@ -21,7 +21,7 @@ export function VerifiedPanel() {
         return (
           <article key={d.benefitId} className="rounded-krds-lg border-2 border-gray-30 bg-white p-4">
             <div className="flex items-center justify-between gap-2">
-              <h3 className="text-heading-s font-bold text-gray-90">{d.name}</h3>
+              <h3 className="text-heading-s-mobile font-bold text-gray-90 md:text-heading-s">{d.name}</h3>
               {dday != null && (
                 <span className="shrink-0 rounded-full bg-danger-50 px-2.5 py-0.5 text-label-s font-bold text-white">
                   D-{dday}

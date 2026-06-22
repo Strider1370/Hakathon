@@ -82,7 +82,7 @@ export function ScreeningFlow({
     return (
       <div className="space-y-6">
         <div className="rounded-krds-lg bg-primary-5 px-4 py-5">
-          <h2 className="text-heading-m font-bold text-gray-90">점검 결과, 이런 혜택이 보여요</h2>
+          <h2 className="text-heading-s-mobile font-bold text-gray-90 md:text-heading-m">점검 결과, 이런 혜택이 보여요</h2>
           <p className="mt-1 text-body-m text-gray-70">
             대화로 답해주신 내용을 바탕으로 코드가 골라낸 결과예요. 최종 자격은 공식 페이지·주민센터에서
             확인하세요.
@@ -91,7 +91,7 @@ export function ScreeningFlow({
 
         {groups.map((g) => (
           <section key={g.key} className="space-y-2">
-            <h3 className="flex items-center gap-2 text-heading-s font-bold text-gray-90">
+            <h3 className="flex items-center gap-2 text-heading-s-mobile font-bold text-gray-90 md:text-heading-s">
               <span className={`rounded-full px-2.5 py-0.5 text-label-s font-bold ${g.meta.tag}`}>
                 {g.items.length}
               </span>
@@ -123,7 +123,7 @@ export function ScreeningFlow({
           <button
             type="button"
             onClick={() => onContinue(receivingIds)}
-            className="mt-3 w-full rounded-krds bg-danger-50 px-6 py-4 text-heading-s font-bold text-white hover:bg-danger-60"
+            className="mt-3 w-full rounded-krds bg-danger-50 px-6 py-4 text-body-l font-bold text-white hover:bg-danger-60"
           >
             이어서 ‘끊길 위험’ 점검하기 →
           </button>
@@ -139,7 +139,7 @@ export function ScreeningFlow({
       <VoiceMic onAnswer={applyVoice} onFinish={voiceFinish} />
 
       {captured.length > 0 && (
-        <div className="rounded-krds border border-gray-20 bg-gray-5 px-3 py-2">
+        <div className="rounded-krds border border-gray-20 bg-white px-3 py-2">
           <p className="text-label-m font-bold text-gray-70">들은 내용 {captured.length}개</p>
           <ul className="mt-1 flex flex-wrap gap-1.5">
             {captured.map(([k, v]) => (
@@ -167,7 +167,7 @@ export function ScreeningFlow({
         </div>
 
       <div className="rounded-krds-lg border border-gray-30 bg-white p-5">
-        <h2 className="text-heading-m font-bold leading-snug text-gray-90">{q.ask}</h2>
+        <h2 className="text-heading-s-mobile font-bold leading-snug text-gray-90 md:text-heading-m">{q.ask}</h2>
         {q.help && <p className="mt-2 text-body-m text-gray-60">{q.help}</p>}
 
         {q.numeric && (

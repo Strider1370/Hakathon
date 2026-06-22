@@ -27,7 +27,7 @@ export function AuthGate({ onVerified }: { onVerified: () => void }) {
         <button
           type="button"
           onClick={() => setModal(true)}
-          className="mt-3 w-full rounded-krds bg-primary-50 px-6 py-4 text-heading-s font-bold text-white hover:bg-primary-60"
+          className="mt-3 w-full rounded-krds bg-primary-50 px-6 py-4 text-body-l font-bold text-white hover:bg-primary-60"
         >
           본인인증하고 정확히 보기 →
         </button>
@@ -36,7 +36,7 @@ export function AuthGate({ onVerified }: { onVerified: () => void }) {
       {modal && (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-4 md:items-center" role="dialog" aria-modal="true">
           <div className="w-full max-w-md rounded-krds-lg bg-white p-5">
-            <h3 className="text-heading-s font-bold text-gray-90">본인인증</h3>
+            <h3 className="text-heading-s-mobile font-bold text-gray-90 md:text-heading-s">본인인증</h3>
             <p className="mt-1 text-body-s text-gray-60">
               간편인증으로 본인 확인 후, 동의하신 소득·재산 정보를 공공마이데이터로 불러옵니다.
             </p>

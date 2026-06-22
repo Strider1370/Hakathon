@@ -60,7 +60,7 @@ export function ChangeFlow({
     return (
       <section className="space-y-4" aria-live="polite">
         <div className="rounded-krds-lg bg-primary-5 px-4 py-4">
-          <h2 className="text-heading-m font-bold text-gray-90">
+          <h2 className="text-heading-s-mobile font-bold text-gray-90 md:text-heading-m">
             끊김 점검 결과
             {riskCount > 0 && <span className="ml-2 text-danger-60">· 끊길 위험 {riskCount}건</span>}
           </h2>
@@ -88,7 +88,7 @@ export function ChangeFlow({
       </div>
 
       <div className="rounded-krds-lg border border-gray-30 bg-white p-5">
-        <h2 className="text-heading-m font-bold leading-snug text-gray-90">{q.ask}</h2>
+        <h2 className="text-heading-s-mobile font-bold leading-snug text-gray-90 md:text-heading-m">{q.ask}</h2>
         {q.help && <p className="mt-2 text-body-m text-gray-60">{q.help}</p>}
         <div className="mt-5 flex flex-col gap-2">
           <button

@@ -36,6 +36,9 @@ blob-report/
 *.trace.zip
 *.log
 
+# 모바일 점검 캡처(로컬 검수용, 재생성 가능: node scripts/shoot.mjs)
+.shots/
+
 # OS/editor
 .DS_Store
 Thumbs.db
