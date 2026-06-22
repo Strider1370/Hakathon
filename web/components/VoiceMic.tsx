@@ -27,6 +27,18 @@ export function VoiceMic({
     if (el) el.scrollTop = el.scrollHeight;
   }, [chat]);
 
+  // 언마운트(결과 화면으로 전환 등) 시 음성 세션·마이크 확실히 종료.
+  useEffect(() => {
+    return () => {
+      try {
+        sessionRef.current?.close?.();
+      } catch {
+        /* noop */
+      }
+      sessionRef.current = null;
+    };
+  }, []);
+
   async function start() {
     setStatus('connecting');
     setMsg('');

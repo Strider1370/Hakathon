@@ -29,6 +29,7 @@ export function ScreeningFlow({
   const [results, setResults] = useState<ScreenResult[] | null>(null);
   const [loading, setLoading] = useState(false);
   const profileRef = useRef<Profile>({});
+  const submittedRef = useRef(false);
 
   const q = QUESTIONS[step];
   const total = QUESTIONS.length;
@@ -53,8 +54,12 @@ export function ScreeningFlow({
     setProfile({ ...profileRef.current });
     const nextIdx = QUESTIONS.findIndex((qq) => profileRef.current[qq.id] === undefined);
     setStep(nextIdx === -1 ? QUESTIONS.length - 1 : nextIdx);
+    // 안전장치: AI가 finish 도구를 안 불러도 9문항이 다 차면 자동 종료.
+    if (nextIdx === -1) voiceFinish();
   }
   function voiceFinish() {
+    if (submittedRef.current) return; // 중복 제출 방지
+    submittedRef.current = true;
     submit(profileRef.current);
   }
 
