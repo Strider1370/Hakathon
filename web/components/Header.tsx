@@ -6,12 +6,9 @@ import { Masthead } from '@krds-ui/core';
 // 모바일(앱/PWA)에선 Masthead·GNB를 숨겨 "컴팩트 헤더 1줄"로 — 데스크톱 크롬을 폰에 욱여넣지 않는다
 // (md: 분기로 데스크톱은 그대로). 상세 docs/android-apk-recipe.md §8.
 
-const SERVICE_NAME = '공공 서비스 스타터'; // TODO: 새 주제 서비스명으로 교체
-const GNB_ITEMS = [
-  { label: '메뉴 1', href: '#section-1' },
-  { label: '메뉴 2', href: '#section-2' },
-  { label: '메뉴 3', href: '#section-3' },
-];
+const SERVICE_NAME = '지킴e';
+const SERVICE_EYEBROW = '복지 끊김 점검';
+const GNB_ITEMS: { label: string; href: string }[] = [];
 
 export function Header() {
   return (
@@ -35,7 +32,7 @@ export function Header() {
           />
           <span className="min-w-0">
             <span className="block text-label-s text-gray-60 md:text-label-m">
-              부처/기관명
+              {SERVICE_EYEBROW}
             </span>
             <span className="block truncate text-title-m font-bold text-gray-90 md:text-heading-s">
               {SERVICE_NAME}
@@ -44,7 +41,7 @@ export function Header() {
         </a>
       </div>
 
-      <nav aria-label="주요 메뉴" className="hidden border-t border-gray-10 md:block">
+      <nav aria-label="주요 메뉴" className={`${GNB_ITEMS.length ? 'hidden md:block' : 'hidden'} border-t border-gray-10`}>
         <div className="mx-auto flex max-w-container gap-1 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {GNB_ITEMS.map((item) => (
             <a

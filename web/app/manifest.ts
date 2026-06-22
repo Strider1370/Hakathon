@@ -4,9 +4,9 @@ import type { MetadataRoute } from 'next';
 // 주제에 맞게 name/short_name/색만 교체. 아이콘은 web/public/icon-{192,512}.png.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: '공공 서비스 스타터',
-    short_name: '공공서비스',
-    description: '한국 공공 서비스 해커톤 스타터',
+    name: '지킴e — 복지 끊김 점검',
+    short_name: '지킴e',
+    description: '받던 복지가 끊기기 전에 말로 점검하는 자격 변동 비서',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
