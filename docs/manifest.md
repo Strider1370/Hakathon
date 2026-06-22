@@ -4,6 +4,9 @@
 
 | 기능 | 상태 | 비고 |
 |---|---|---|
+| 자격 문진(`lib/screening.ts` 9문항 + 분류) | **implemented** | 첫 실행 단계별 질문 → 12개 정책 해당 '가능성' 분류(단정 금지). UI 9문항→결과 그룹 브라우저 검증 |
+| 문진 API(`/api/screen`) | **implemented** | 프로필→가능성. 페르소나 8건 정상(200) |
+| 두 단계 연결(`Onboarding`) | **implemented** | 문진 '받는 혜택'을 끊김 점검에 prefill. 브라우저 검증 |
 | 결정론 판정 엔진(`lib/eligibility.ts`) | **implemented** | 변동→cutoffTriggers 키워드 매핑, 순수함수. node 검증 통과 |
 | 큐레이션 데이터 12개(`curated-benefits.json`) | **implemented** | 권위 출처 스크랩, 끊김 트리거 4~7개/건, confidence 표기 |
 | 점검 API(`/api/check`) | **implemented** | 키 불필요. 페르소나 4건 정상 반환(200) |

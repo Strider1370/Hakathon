@@ -14,8 +14,14 @@ const CHANGES: { id: string; label: string }[] = [
   { id: 'disability_recheck', label: '장애 정도 재심사가 있어요' },
 ];
 
-export function CheckForm({ benefits }: { benefits: { id: string; name: string }[] }) {
-  const [picked, setPicked] = useState<Set<string>>(new Set());
+export function CheckForm({
+  benefits,
+  initialPicked = [],
+}: {
+  benefits: { id: string; name: string }[];
+  initialPicked?: string[];
+}) {
+  const [picked, setPicked] = useState<Set<string>>(new Set(initialPicked));
   const [changes, setChanges] = useState<Set<string>>(new Set());
   const [cards, setCards] = useState<ResultCard[] | null>(null);
   const [loading, setLoading] = useState(false);
