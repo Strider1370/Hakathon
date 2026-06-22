@@ -216,3 +216,16 @@ iframe {
 .footnotes > .footnotes-list p {
   margin: 0;
 }
+
+/* ── 발표 원거리 시인성: 본문/카드 글자 키우기 (빔 뒤쪽 좌석 가독성) ── */
+/* 생성기가 UnoCSS attributify(<div text-lg>)를 쓰므로 [속성] + .클래스 둘 다 타깃.
+   슬라이드 본문 한정. 큰 숫자(text-7xl 등)는 건드리지 않음. */
+.slidev-layout :is([text-sm], .text-sm)   { font-size: 1.25rem !important; line-height: 1.5 !important; }
+.slidev-layout :is([text-base], .text-base) { font-size: 1.35rem !important; }
+.slidev-layout :is([text-lg], .text-lg)   { font-size: 1.6rem  !important; }
+.slidev-layout :is([text-xl], .text-xl)   { font-size: 1.8rem  !important; }
+.slidev-layout :is([text-2xl], .text-2xl) { font-size: 2.1rem  !important; }
+.slidev-layout :where(p, li) { font-size: 1.3rem; line-height: 1.55; }
+.slidev-layout { font-size: 1.2rem; } /* 크기 속성 없는 plain 텍스트 베이스 상향 */
+.slidev-layout h1 { font-size: 2.5rem !important; }
+.slidev-layout h2 { font-size: 1.9rem !important; }

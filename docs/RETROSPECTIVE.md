@@ -35,19 +35,26 @@
 10. **`reference/06` 음성 모델·엔드포인트 최신화(2026-06 확인값).** 대화 `gpt-realtime-2`(이미 있음) + **전사 `gpt-realtime-whisper`**(세션 `audio.input.transcription.model`, `language:'ko'`) + 통역 `gpt-realtime-translate`. 임시키 발급은 **`POST /v1/realtime/client_secrets`** (body `{session:{type:'realtime',model}}` → `value` `ek_…`), **구 `/v1/realtime/sessions`는 폐기**(따라 하면 `Invalid URL`). 배경소음 과민하면 `server_vad`+`threshold`. (모델·엔드포인트는 자주 바뀌니 "값"보다 "재확인 링크"를 함께.)
    → 반영 위치: `reference/06` §B-1(모델)·§B-2(임시키 엔드포인트)·§B-5(VAD).
 
-### 새 환경(새 노트북·새 와이파이)에서 AWS SSH 무중단 접속 — 대회 당일 필수
+### 새 환경(새 노트북·새 인터넷)에서 AWS 서버 접속 — 대회 당일 **필수 절차** (확정)
 
-> 실측(2026-06): `reference/05 §3`의 연결 흐름(현재 IP를 SG22에 추가 → EC2 Instance Connect로 임시 공개키 푸시 → ssh)은 **IP가 바뀐 새 환경에서 그대로 성공**한다. `ssh-keygen -N '""'`(빈 패스프레이즈)도 정상. **그러나 §3엔 새 환경 전제·예외처리가 빠져** 새 노트북에선 첫 명령부터 막힌다 — 아래로 강화한다.
+> **대회는 새 노트북 + 새 인터넷에서 진행이 확정.** "저장된 키·IP" 가정은 전부 무효 — 서버/배포/APK 작업 시 **매번 아래 부트스트랩을 반드시 수행**한다. (실측 2026-06: IP 바뀐 새 환경에서 성공 확인.)
+>
+> **사람이 하는 건 `aws configure` 한 번뿐. 시크릿 키도, IP도 AI에게 알려주지 않는다** — AI가 `~/.aws`에서 자격증명을 읽고, 공인 IP는 자동 감지한다.
 
-11. **AWS 자격증명 게이트 + 강화 부트스트랩을 '서버 접속 0단계'로 박는다.** 서버/배포/APK 등 AWS가 필요하면 **다른 걸 하기 전에** 이 절차부터:
-    - **0a. AWS CLI 확인/설치** — 없으면 `winget install -e --id Amazon.AWSCLI`(또는 사용자에게 설치 요청). §3는 CLI가 깔린 걸 가정해서 새 노트북에서 깨짐.
-    - **0b. 자격증명 게이트(★)** — `aws sts get-caller-identity` 실패 시 **즉시 멈추고 사용자에게 요청**: "터미널에서 직접 `aws configure` 실행 → Access Key ID / Secret Access Key / region / `json` 입력. ⚠️ **시크릿 키를 채팅에 붙여넣지 말 것.** 끝나면 알려주세요." → 완료 후 재시도. (AI는 시크릿을 받지·명령에 넣지·파일에 쓰지 않는다.)
-    - **1. 인스턴스 running 확인** — `stopped`면 `ec2 start-instances` + `ec2 wait instance-running`. (꺼져 있으면 ssh가 그냥 timeout → §3엔 이 체크 없음.)
-    - **2. 현재 공인 IP를 SG22에 추가** — 새 와이파이면 IP가 다름. 이미 있으면 `InvalidPermission.Duplicate` 에러가 나는데 **그건 정상이니 무시**(2>$null). §3엔 이 안내 없음.
-    - **3. 임시 RSA 키(비대화형)** — `Remove-Item` 으로 기존 키 먼저 지우고(덮어쓰기 프롬프트 회피) `ssh-keygen -t rsa -b 2048 -f <tmp> -N '""' -q`. **Instance Connect는 RSA만** 받음.
-    - **4. 60초 푸시 → 즉시 ssh** — `ec2-instance-connect send-ssh-public-key` 직후 바로 `ssh`(사이에 딴짓 금지, 창이 60초).
-    - 인프라 값(`sg-…`·`i-…`·AZ·EIP)은 `reference/05 §1` 표 사용. IAM은 **AdministratorAccess**(또는 `ec2-instance-connect:SendSSHPublicKey`).
-   → 반영 위치: `CLAUDE.md`에 "AWS 작업 전 자격증명 게이트" 한 줄(항상 로드 → 선제 발동) + `reference/05 §3` 맨 앞 0단계로 위 전문 + §7.1.
+11. **AWS 자격증명 게이트 + 부트스트랩을 '서버 접속 0단계'로 박는다 (필수).**
+    - **0a. AWS CLI 없으면 설치** (`winget install -e --id Amazon.AWSCLI`).
+    - **0b. ★자격증명 게이트★** — `aws sts get-caller-identity` 실패 시 **즉시 멈추고 사용자에게 요청**: "터미널에서 직접 `aws configure` 실행(Access Key ID / Secret Access Key / region / `json`). ⚠️ **시크릿 키를 채팅·env·git에 적지 말 것.** 끝나면 알려주세요." → 완료 후 재시도. (AI는 시크릿을 받지·명령에 넣지·파일에 쓰지 않는다.)
+    - **1. 인스턴스 running 확인** — `stopped`면 `ec2 start-instances` + `ec2 wait instance-running`.
+    - **2. 공인 IP 자동 감지 → SG22 등록** — `checkip.amazonaws.com`으로 현재 IP를 잡아 `authorize-security-group-ingress`(이미 있으면 `Duplicate`=정상, `2>$null`). **사용자가 IP를 알려줄 필요 없음.**
+    - **3. 임시 RSA 키(비대화형)** — 기존 키 `Remove-Item` 후 `ssh-keygen -t rsa -b 2048 -f <tmp> -N '""' -q`. **Instance Connect는 RSA만.**
+    - **4. 60초 푸시 → 즉시 ssh** — `ec2-instance-connect send-ssh-public-key` 직후 바로 `ssh`(사이에 딴짓 금지).
+    - 인프라 값(`sg-…`·`i-…`·AZ·EIP)은 `reference/05 §1` 표. IAM은 **AdministratorAccess**(또는 `ec2-instance-connect:SendSSHPublicKey`).
+
+12. **기존 지침에서 헷갈리는/불필요한 부분은 삭제 (혼동 방지).**
+    - `reference/05 §3`의 **"4) 한 번 들어가서 키를 영구 등록하면 이후 60초 제한 없이 접속"** 줄 → **삭제.** 새 노트북엔 그 로컬 키가 없어 매번 Instance Connect라, 이 문구는 거짓·혼동을 만든다.
+    - `reference/05 §3` 맨 앞에 **0a(CLI 설치)·0b(자격증명 게이트)** 추가 — 없으면 새 노트북서 첫 명령부터 막힘.
+    - **비밀번호 SSH 경로는 문서에 넣지 않는다** — 검토했으나 SG 개방이 필요해 보안상 기각. (서버 `PasswordAuthentication yes`는 둬도 무방하나, 운영은 **키(Instance Connect) 단일**로.)
+   → 반영 위치: `CLAUDE.md`에 "AWS 작업 전 자격증명 게이트 — 사용자는 `aws configure`만" 한 줄(항상 로드 → 선제 발동) + `reference/05 §3`(0단계 추가 + "영구 등록" 줄 삭제) + §7.1.
 
 ---
 
