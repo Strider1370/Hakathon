@@ -14,7 +14,16 @@ export async function POST() {
     const res = await fetch('https://api.openai.com/v1/realtime/client_secrets', {
       method: 'POST',
       headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
-      body: JSON.stringify({ session: { type: 'realtime', model, audio: { output: { voice: 'marin' } } } }),
+      body: JSON.stringify({
+        session: {
+          type: 'realtime',
+          model,
+          audio: {
+            input: { transcription: { model: 'gpt-4o-mini-transcribe' } }, // 사용자 음성도 텍스트로
+            output: { voice: 'marin' },
+          },
+        },
+      }),
       signal: AbortSignal.timeout(12000),
     });
     if (!res.ok) {

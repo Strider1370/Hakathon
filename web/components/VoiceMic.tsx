@@ -1,8 +1,10 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { z } from 'zod';
 import { QUESTIONS } from '@/lib/screening-questions';
+
+type ChatMsg = { id: string; role: string; text: string };
 
 // 음성 문진. AI가 9문항을 한 번에 하나씩 묻고, strict 함수호출(set_answer)로 슬롯을 채운다.
 // 판정·계산은 절대 AI가 하지 않음(코드가 함). 키 없거나 실패 시 폴백(탭 문진).
@@ -15,7 +17,14 @@ export function VoiceMic({
 }) {
   const [status, setStatus] = useState<'idle' | 'connecting' | 'live' | 'error'>('idle');
   const [msg, setMsg] = useState('');
+  const [chat, setChat] = useState<ChatMsg[]>([]);
   const sessionRef = useRef<{ close?: () => void } | null>(null);
+  const chatEndRef = useRef<HTMLDivElement | null>(null);
+
+  // 새 말풍선이 오면 맨 아래로 스크롤
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [chat]);
 
   async function start() {
     setStatus('connecting');
@@ -71,6 +80,25 @@ export function VoiceMic({
 
       const session = new RealtimeSession(agent, { model: tok.model || 'gpt-realtime' });
       sessionRef.current = session as unknown as { close?: () => void };
+
+      // 대화 이력(음성 전사)을 말풍선으로 — 도우미·사용자 발화를 텍스트로 표시.
+      const sess = session as unknown as { on: (e: string, cb: (h: unknown) => void) => void };
+      sess.on('history_updated', (history: unknown) => {
+        const items = Array.isArray(history) ? history : [];
+        const msgs: ChatMsg[] = items
+          .filter((it) => (it as { type?: string }).type === 'message')
+          .map((it) => {
+            const m = it as { itemId?: string; role?: string; content?: { transcript?: string; text?: string }[] };
+            const text = (m.content ?? [])
+              .map((c) => c.transcript ?? c.text ?? '')
+              .join(' ')
+              .trim();
+            return { id: m.itemId ?? String(Math.random()), role: m.role ?? 'assistant', text };
+          })
+          .filter((m) => m.text);
+        setChat(msgs);
+      });
+
       await session.connect({ apiKey: tok.value });
       setStatus('live');
     } catch {
@@ -86,6 +114,7 @@ export function VoiceMic({
       /* noop */
     }
     sessionRef.current = null;
+    setChat([]);
     setStatus('idle');
   }
 
@@ -118,6 +147,28 @@ export function VoiceMic({
         </div>
       )}
       {status === 'error' && <p className="py-1 text-body-m text-danger-60">{msg}</p>}
+
+      {chat.length > 0 && (
+        <div className="mt-3 max-h-72 space-y-2 overflow-y-auto rounded-krds bg-white p-3">
+          {chat.map((m) =>
+            m.role === 'user' ? (
+              <div key={m.id} className="flex justify-end">
+                <p className="max-w-[80%] whitespace-pre-wrap rounded-krds rounded-tr-none bg-[#FEE500] px-3 py-2 text-body-m text-gray-90">
+                  {m.text}
+                </p>
+              </div>
+            ) : (
+              <div key={m.id} className="flex flex-col items-start">
+                <span className="mb-0.5 ml-1 text-detail-m text-gray-50">복지 점검 도우미</span>
+                <p className="max-w-[80%] whitespace-pre-wrap rounded-krds rounded-tl-none border border-gray-20 bg-gray-5 px-3 py-2 text-body-m text-gray-90">
+                  {m.text}
+                </p>
+              </div>
+            ),
+          )}
+          <div ref={chatEndRef} />
+        </div>
+      )}
     </div>
   );
 }

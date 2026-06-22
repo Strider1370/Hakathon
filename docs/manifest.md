@@ -15,7 +15,8 @@
 | 변동 가이드 문진(`ChangeFlow`) | **implemented** | 변동 6문항 예/아니요 → 끊김 판정. 브라우저 검증 |
 | 본인인증→공공마이데이터 연계 | **mocked** | 목업: 인증 모달→가상 페르소나 정확 소득인정액·D-day 주입(추정→정확). 화면·발표 모두 '목업' 라벨 명시 |
 | Realtime 임시키 발급(`/api/realtime-token`) | **implemented** | OPENAI_API_KEY로 ek_ 토큰 발급(gpt-realtime). 실호출 검증(200, ek_) |
-| 음성 문진(`VoiceMic` + Agents SDK) | **implemented(구조)** | AI 9문항 음성 진행 + strict 함수호출(set_answer)로 슬롯 채움, 판정은 코드. 탭 폴백 공존. ⚠️ 실제 음성 대화는 마이크 있는 실기기에서 검증 필요(헤드리스 프리뷰는 마이크 없어 폴백 확인까지만) |
+| 음성 문진(`VoiceMic` + Agents SDK) | **implemented(구조)** | AI 9문항 음성 진행 + strict 함수호출(set_answer)로 슬롯 채움, 판정은 코드. 탭 폴백 공존. ⚠️ 실제 음성 대화는 마이크 있는 실기기에서 검증 필요 |
+| 음성 대화 자막(카카오톡식 말풍선) | **implemented(구조)** | 입력 음성 전사 활성화 + history_updated 구독 → 도우미/사용자 발화 말풍선 표시(이중 확인 채널). 실기기 검증 필요 |
 | AI 자연어 텍스트→슬롯(`/api/llm`) | **TODO(선택)** | 음성으로 대체되어 우선순위 낮음 |
 | 전수 카탈로그 검색(16,000건) | **dropped(데모)** | 모집단은 있으나 데모는 curated 12개로 한정 |
 | 푸시 알림 백엔드 | **dropped** | 발표서 'mocked' 명시 |
