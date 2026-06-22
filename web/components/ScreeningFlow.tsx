@@ -1,7 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { QUESTIONS, type Profile, type ScreenResult, type Likelihood } from '@/lib/screening-questions';
+import { VoiceMic } from '@/components/VoiceMic';
+
+const QLABEL: Record<string, string> = Object.fromEntries(
+  QUESTIONS.flatMap((q) => q.options.map((o) => [`${q.id}:${o.value}`, `${q.ask.slice(0, 10)}… ${o.label}`])),
+);
 
 const LIKELIHOOD_GROUP: Record<Likelihood, { label: string; tag: string; order: number }> = {
   receiving: { label: '이미 받고 계신 것 같아요', tag: 'bg-primary-50 text-white', order: 0 },
@@ -11,12 +16,19 @@ const LIKELIHOOD_GROUP: Record<Likelihood, { label: string; tag: string; order: 
   unlikely: { label: '해당 가능성이 낮아요', tag: 'bg-gray-30 text-gray-70', order: 4 },
 };
 
-export function ScreeningFlow({ onContinue }: { onContinue: (receivingIds: string[]) => void }) {
+export function ScreeningFlow({
+  onContinue,
+  onResults,
+}: {
+  onContinue: (receivingIds: string[]) => void;
+  onResults?: () => void;
+}) {
   const [step, setStep] = useState(0);
   const [profile, setProfile] = useState<Profile>({});
   const [income, setIncome] = useState('');
   const [results, setResults] = useState<ScreenResult[] | null>(null);
   const [loading, setLoading] = useState(false);
+  const profileRef = useRef<Profile>({});
 
   const q = QUESTIONS[step];
   const total = QUESTIONS.length;
@@ -24,6 +36,7 @@ export function ScreeningFlow({ onContinue }: { onContinue: (receivingIds: strin
   async function answer(value: string) {
     const next: Profile = { ...profile, [q.id]: value };
     if (q.numeric && value === 'yes' && income) next.incomeWon = Number(income.replace(/[^0-9]/g, '')) || null;
+    profileRef.current = next;
     setProfile(next);
     setIncome('');
     if (step + 1 < total) {
@@ -31,6 +44,15 @@ export function ScreeningFlow({ onContinue }: { onContinue: (receivingIds: strin
     } else {
       await submit(next);
     }
+  }
+
+  // 음성 도우미가 채운 답을 같은 프로필에 반영(판정은 동일하게 코드가).
+  function applyVoice(id: string, value: string) {
+    profileRef.current = { ...profileRef.current, [id]: value };
+    setProfile({ ...profileRef.current });
+  }
+  function voiceFinish() {
+    submit(profileRef.current);
   }
 
   async function submit(p: Profile) {
@@ -43,6 +65,7 @@ export function ScreeningFlow({ onContinue }: { onContinue: (receivingIds: strin
       });
       const data = await res.json();
       setResults(data.results ?? []);
+      onResults?.();
     } finally {
       setLoading(false);
     }
@@ -110,19 +133,38 @@ export function ScreeningFlow({ onContinue }: { onContinue: (receivingIds: strin
   }
 
   // ── 질문 화면 ──
+  const captured = Object.entries(profile).filter(([k]) => k !== 'incomeWon');
   return (
-    <div className="mx-auto max-w-xl">
-      <div className="mb-4">
-        <div className="h-2 w-full rounded-full bg-gray-20">
-          <div
-            className="h-2 rounded-full bg-primary-50 transition-all"
-            style={{ width: `${((step + (loading ? 1 : 0)) / total) * 100}%` }}
-          />
+    <div className="mx-auto max-w-xl space-y-4">
+      <VoiceMic onAnswer={applyVoice} onFinish={voiceFinish} />
+
+      {captured.length > 0 && (
+        <div className="rounded-krds border border-gray-20 bg-gray-5 px-3 py-2">
+          <p className="text-label-m font-bold text-gray-70">들은 내용 {captured.length}개</p>
+          <ul className="mt-1 flex flex-wrap gap-1.5">
+            {captured.map(([k, v]) => (
+              <li key={k} className="rounded-full bg-white px-2.5 py-1 text-detail-m text-gray-70">
+                {QLABEL[`${k}:${v}`] ?? `${k}: ${v}`}
+              </li>
+            ))}
+          </ul>
         </div>
-        <p className="mt-2 text-label-m text-gray-60">
-          {step + 1} / {total}
-        </p>
-      </div>
+      )}
+
+      <div className="text-center text-label-m text-gray-40">— 또는 직접 눌러서 답하기 —</div>
+
+      <div>
+        <div className="mb-4">
+          <div className="h-2 w-full rounded-full bg-gray-20">
+            <div
+              className="h-2 rounded-full bg-primary-50 transition-all"
+              style={{ width: `${((step + (loading ? 1 : 0)) / total) * 100}%` }}
+            />
+          </div>
+          <p className="mt-2 text-label-m text-gray-60">
+            {step + 1} / {total}
+          </p>
+        </div>
 
       <div className="rounded-krds-lg border border-gray-30 bg-white p-5">
         <h2 className="text-heading-m font-bold leading-snug text-gray-90">{q.ask}</h2>
@@ -164,6 +206,7 @@ export function ScreeningFlow({ onContinue }: { onContinue: (receivingIds: strin
             ← 이전 질문
           </button>
         )}
+        </div>
       </div>
       {loading && <p className="mt-4 text-center text-body-m text-gray-60">결과를 정리하고 있어요…</p>}
     </div>

@@ -16,8 +16,10 @@ const CHANGE_QUESTIONS: { change: string; ask: string; help?: string }[] = [
 
 export function ChangeFlow({
   receivingBenefits,
+  onResults,
 }: {
   receivingBenefits: string[];
+  onResults?: () => void;
 }) {
   const [step, setStep] = useState(0);
   const [changes, setChanges] = useState<string[]>([]);
@@ -47,6 +49,7 @@ export function ChangeFlow({
       });
       const data = await res.json();
       setCards(data.cards ?? []);
+      onResults?.();
     } finally {
       setLoading(false);
     }
