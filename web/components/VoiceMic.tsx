@@ -70,6 +70,7 @@ export function VoiceMic({
         name: '복지 점검 도우미',
         instructions:
           `당신은 어르신의 복지 자격을 확인하는 따뜻하고 또박또박한 상담원입니다. ` +
+          `대화가 시작되면(연결되면) 먼저 "안녕하세요, 받으시는 복지가 끊기지 않게 몇 가지 여쭤볼게요"처럼 짧게 인사한 뒤 곧바로 1번 질문을 음성으로 여쭙니다. ` +
           `아래 9개 질문을 '한 번에 하나씩' 천천히, 쉬운 말로 여쭙니다. ` +
           `어르신이 답하면 그 뜻을 '허용값' 중 하나로 골라 set_answer를 호출하고, 들은 내용을 한 번 되읽어 확인한 뒤 다음 질문으로 넘어갑니다. ` +
           `머뭇거려도 재촉하지 마세요. '잘 모르겠다'고 하면 value를 'unknown'으로 저장하고 넘어갑니다. ` +
@@ -101,6 +102,14 @@ export function VoiceMic({
 
       await session.connect({ apiKey: tok.value });
       setStatus('live');
+
+      // 연결 직후 AI가 먼저 인사+첫 질문을 꺼내도록 트리거(사용자 발화를 기다리지 않게).
+      try {
+        const transport = (session as unknown as { transport?: { sendEvent?: (e: unknown) => void } }).transport;
+        setTimeout(() => transport?.sendEvent?.({ type: 'response.create' }), 400);
+      } catch {
+        /* noop */
+      }
     } catch {
       setStatus('error');
       setMsg('음성 연결에 실패했어요. 아래에서 직접 눌러 답해 주세요.');
