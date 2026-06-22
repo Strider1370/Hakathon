@@ -309,7 +309,7 @@
   grid-template-columns: 1fr 1fr;
   column-gap: 48px;
   row-gap: 24px;
-  align-content: center;
+  align-content: start; /* center면 내용이 길 때 위로 넘쳐 제목을 덮음 → 상단 정렬 */
 }
 .slide.split .col { min-width: 0; align-self: stretch; }
 .slide.split .col-media {

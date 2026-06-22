@@ -7,7 +7,7 @@ highlighter: shiki
 css: unocss
 colorSchema: dark
 transition: fade-out
-title: "레이아웃 갤러리 (16종)"
+title: "받던 복지, 끊기기 전에"
 lang: ko
 lineNumbers: false
 mdc: true
@@ -21,31 +21,31 @@ impl: "implemented"
 ---
 <div class="flex flex-col items-center justify-center text-center">
 
-<div class="text-cyan-300 tracking-widest text-sm font-semibold uppercase opacity-90" data-addr="slide-01.content.eyebrow">EYEBROW</div>
+<div class="text-cyan-300 tracking-widest text-sm font-semibold uppercase opacity-90" data-addr="slide-01.content.eyebrow">복지 끊김 점검</div>
 
-<h1 data-addr="slide-01.content.title">hero</h1>
+<h1 data-addr="slide-01.content.title">받던 복지, 끊기기 전에</h1>
 
-<div class="mt-4 max-w-3xl opacity-80 text-lg" data-addr="slide-01.content.subtitle">부제목 — 한 줄 설명</div>
+<div class="mt-4 max-w-3xl opacity-80 text-lg" data-addr="slide-01.content.subtitle">어르신이 말로 점검하는 자격 변동 비서</div>
 </div>
 
-<div v-click class="mt-8" data-addr="slide-01.content.footnote"><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm opacity-80">각주 / 태그</div></div>
+<div v-click class="mt-8" data-addr="slide-01.content.footnote"><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm opacity-80">음성 · KRDS · 공공데이터</div></div>
 
 <!--
-레이아웃 [hero] — 슬롯: eyebrow, title, subtitle, footnote
+복지의 진짜 문제는 못 받는 게 아니라, 받던 게 끊기는 겁니다. 우리는 그걸 끊기기 전에, 말로 점검합니다.
 -->
 
 ---
 class: px-14 py-10
-title: "problem-flow"
+title: "복지는 받을 때가 아니라, 끊길 때 아프다"
 glowSeed: 285
 glow: left
 slideId: "slide-02"
 semanticLayout: "problem-flow"
-durationSeconds: 20
+durationSeconds: 25
 impl: "implemented"
 ---
 
-<h1 data-addr="slide-02.content.title">problem-flow</h1>
+<h1 data-addr="slide-02.content.title">복지는 받을 때가 아니라, 끊길 때 아프다</h1>
 
 <div mt-8>
   <div data-addr="slide-02.content.items" border="2 solid amber-800" bg="amber-800/20" rounded-lg overflow-hidden>
@@ -56,94 +56,94 @@ impl: "implemented"
     <div px-5 py-4 flex flex-col gap-1>
       <div flex items-start gap-2 py-1 data-addr="slide-02.content.items.0">
         <div i-carbon:warning-alt text-amber-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>items 항목 1</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>소득·가구가 바뀐다</div><div text-sm opacity-80>일을 시작하거나 가족과 합치면 자격이 변한다</div></div>
       </div>
       <div flex items-start gap-2 py-1 data-addr="slide-02.content.items.1">
         <div i-carbon:warning-alt text-amber-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>items 항목 2</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>그대로 끊긴다</div><div text-sm opacity-80>갱신·서류를 놓치면 받던 게 멈춘다</div></div>
       </div>
       <div flex items-start gap-2 py-1 data-addr="slide-02.content.items.2">
         <div i-carbon:warning-alt text-amber-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>items 항목 3</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>본인은 가장 늦게 안다</div><div text-sm opacity-80>환수 통지로 안다 — 5년 1,140억, 가산세·지급제한</div></div>
       </div>
     </div>
   </div>
 </div>
 
 <!--
-레이아웃 [problem-flow] — 슬롯: title, items
+소득이 늘거나 가족과 합치면 자격이 바뀝니다. 본인은 모르고 지내다 환수 통지로 압니다. 최근 5년 부적격 지급이 1,140억, 가산세에 지급 제한까지 붙습니다.
 -->
 
 ---
 class: px-14 py-10
-title: "contrast"
+title: "방향이 반대다"
 glowSeed: 286
 glow: right
 slideId: "slide-03"
 semanticLayout: "contrast"
-durationSeconds: 20
+durationSeconds: 25
 impl: "implemented"
 ---
 
-<h1 data-addr="slide-03.content.title">contrast</h1>
+<h1 data-addr="slide-03.content.title">방향이 반대다</h1>
 
-<div text-xl opacity-70 mt-1 data-addr="slide-03.content.lead">리드 문장 (대비/맥락)</div>
+<div text-xl opacity-70 mt-1 data-addr="slide-03.content.lead">받을 것을 찾아주는 서비스는 많다. 끊길 위험을 경고하는 건 없다.</div>
 
 <div mt-8 grid grid-cols-2 gap-6 items-start>
   <div data-addr="slide-03.content.left" border="2 solid red-800" bg="red-800/20" rounded-lg overflow-hidden>
     <div bg="red-800/40" px-5 py-3 flex items-center>
       <div i-carbon:warning-alt text-red-300 text-2xl mr-2 shrink-0 />
-      <span font-bold text-xl>기존</span>
+      <span font-bold text-xl>기존 (복지로·보조금24·토스)</span>
     </div>
     <div px-5 py-4 flex flex-col gap-1>
       <div flex items-start gap-2 py-1 data-addr="slide-03.content.left.0">
         <div i-carbon:close text-red-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>left 항목 1</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>받을 것 안내</div><div text-sm opacity-80>신규 신청·상향 중심</div></div>
       </div>
       <div flex items-start gap-2 py-1 data-addr="slide-03.content.left.1">
         <div i-carbon:close text-red-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>left 항목 2</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>앱·로그인·타이핑 전제</div><div text-sm opacity-80>어르신은 배제</div></div>
       </div>
       <div flex items-start gap-2 py-1 data-addr="slide-03.content.left.2">
         <div i-carbon:close text-red-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>left 항목 3</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>판정은 백오피스에</div><div text-sm opacity-80>당사자에겐 안 보임</div></div>
       </div>
     </div>
   </div>
   <div v-click data-addr="slide-03.content.right" border="2 solid green-800" bg="green-800/20" rounded-lg overflow-hidden>
     <div bg="green-800/40" px-5 py-3 flex items-center>
       <div i-carbon:idea text-green-300 text-2xl mr-2 shrink-0 />
-      <span font-bold text-xl>개선</span>
+      <span font-bold text-xl>우리</span>
     </div>
     <div px-5 py-4 flex flex-col gap-1>
       <div flex items-start gap-2 py-1 data-addr="slide-03.content.right.0">
         <div i-carbon:checkmark text-green-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>right 항목 1</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>끊길 위험 경고</div><div text-sm opacity-80>유지·갱신 중심</div></div>
       </div>
       <div flex items-start gap-2 py-1 data-addr="slide-03.content.right.1">
         <div i-carbon:checkmark text-green-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>right 항목 2</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>말로 점검</div><div text-sm opacity-80>어르신이 음성으로</div></div>
       </div>
       <div flex items-start gap-2 py-1 data-addr="slide-03.content.right.2">
         <div i-carbon:checkmark text-green-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>right 항목 3</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>판정을 당사자 손에</div><div text-sm opacity-80>끊기기 전에 미리</div></div>
       </div>
     </div>
   </div>
 </div>
 
 <!--
-레이아웃 [contrast] — 슬롯: title, lead, leftLabel, left, rightLabel, right
+받을 것 찾아주는 서비스는 많습니다. 복지멤버십도 그렇죠. 그런데 전부 방향이 받기입니다. 끊길 위험을 경고하는 건 없습니다. 방향을 뒤집었습니다.
 -->
 
 ---
 layout: center
-title: "insight-statement"
+title: "복지는 유지하는 동안 끊긴다"
 glowSeed: 287
 glow: center
 slideId: "slide-04"
 semanticLayout: "insight-statement"
-durationSeconds: 20
+durationSeconds: 15
 impl: "implemented"
 ---
 
@@ -151,21 +151,21 @@ impl: "implemented"
 
 <div class="text-cyan-300 font-bold tracking-widest text-sm">인사이트</div>
 
-<h1 data-addr="slide-04.content.title">insight-statement</h1>
+<h1 data-addr="slide-04.content.title">복지는 유지하는 동안 끊긴다</h1>
 
 </div>
 
 <div v-click class="mt-8 mx-auto max-w-2xl"><div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-5 ">
-<div class="opacity-90" data-addr="slide-04.content.subtitle">부제목 — 한 줄 설명</div>
+<div class="opacity-90" data-addr="slide-04.content.subtitle">끊기기 전에, 말로 점검한다</div>
 </div></div>
 
 <!--
-레이아웃 [insight-statement] — 슬롯: title, subtitle
+(한 박자 쉬고) 복지는 받는 순간이 아니라, 유지하는 동안 끊깁니다.
 -->
 
 ---
 class: px-14 py-10
-title: "product-overview"
+title: "세 단계를 한 흐름으로"
 glowSeed: 288
 glow: bottom
 slideId: "slide-05"
@@ -174,7 +174,7 @@ durationSeconds: 20
 impl: "implemented"
 ---
 
-<h1 data-addr="slide-05.content.title">product-overview</h1>
+<h1 data-addr="slide-05.content.title">세 단계를 한 흐름으로</h1>
 
 <div mt-6 grid grid-cols-3 gap-4 h-75>
 
@@ -183,30 +183,30 @@ impl: "implemented"
   <div data-addr="slide-05.content.features.0" border="2 solid white/5" rounded-lg overflow-hidden bg="white/5" backdrop-blur-sm h-full>
     <div flex items-center bg="white/10" backdrop-blur px-3 py-2>
       <div i-carbon:dot-mark text-cyan-300 text-xl mr-2 shrink-0 />
-      <div font-semibold text-lg>features 항목 1</div>
+      <div font-semibold text-lg>말로 문진</div>
     </div>
     <div px-4 py-3 flex flex-col gap-2>
-      <div text-sm opacity-80>샘플 설명 텍스트</div>
+      <div text-sm opacity-80>받는 혜택을 찾아준다</div>
     </div>
   </div>
 
   <div data-addr="slide-05.content.features.1" border="2 solid white/5" rounded-lg overflow-hidden bg="white/5" backdrop-blur-sm h-full>
     <div flex items-center bg="white/10" backdrop-blur px-3 py-2>
       <div i-carbon:dot-mark text-amber-300 text-xl mr-2 shrink-0 />
-      <div font-semibold text-lg>features 항목 2</div>
+      <div font-semibold text-lg>변동 점검</div>
     </div>
     <div px-4 py-3 flex flex-col gap-2>
-      <div text-sm opacity-80>샘플 설명 텍스트</div>
+      <div text-sm opacity-80>끊길 위험을 짚는다</div>
     </div>
   </div>
 
   <div data-addr="slide-05.content.features.2" border="2 solid white/5" rounded-lg overflow-hidden bg="white/5" backdrop-blur-sm h-full>
     <div flex items-center bg="white/10" backdrop-blur px-3 py-2>
       <div i-carbon:dot-mark text-green-300 text-xl mr-2 shrink-0 />
-      <div font-semibold text-lg>features 항목 3</div>
+      <div font-semibold text-lg>본인인증</div>
     </div>
     <div px-4 py-3 flex flex-col gap-2>
-      <div text-sm opacity-80>샘플 설명 텍스트</div>
+      <div text-sm opacity-80>추정을 정확으로</div>
     </div>
   </div>
 
@@ -215,56 +215,27 @@ impl: "implemented"
 </div>
 
 <!--
-레이아웃 [product-overview] — 슬롯: title, features
+세 단계입니다. 말로 물어 받는 걸 찾고, 변동을 점검해 끊길 위험을 짚고, 본인인증하면 추정이 정확한 숫자로 바뀝니다. 직접 보시죠.
 -->
 
 ---
 class: px-14 py-10
-title: "demo-fullscreen"
+title: "말 한마디면 된다"
 glowSeed: 289
 glow: top
 slideId: "slide-06"
-semanticLayout: "demo-fullscreen"
-durationSeconds: 20
-impl: "implemented"
----
-
-<h1 data-addr="slide-06.content.title">demo-fullscreen</h1>
-
-<div mt-4>
-
-<div border="2 solid white/10" bg="white/5" backdrop-blur-sm rounded-xl grid place-items-center text-center class="h-[55vh]" data-addr="slide-06.assets.image" data-asset-status="placeholder">
-  <div><div i-carbon:image text-6xl opacity-40 mx-auto /><div opacity-60 mt-2>데모 화면</div></div>
-</div>
-
-</div>
-
-<div opacity-60 mt-3 data-addr="slide-06.content.subtitle">부제목 — 한 줄 설명</div>
-
-<!--
-레이아웃 [demo-fullscreen] — 슬롯: title, subtitle
--->
-
----
-class: px-14 py-10
-title: "demo-callout"
-glowSeed: 290
-glow: full
-slideId: "slide-07"
 semanticLayout: "demo-callout"
-durationSeconds: 20
+durationSeconds: 10
 impl: "implemented"
 ---
 
-<h1 data-addr="slide-07.content.title">demo-callout</h1>
+<h1 data-addr="slide-06.content.title">말 한마디면 된다</h1>
 
 <div mt-6 grid grid-cols-2 gap-8 items-center>
 
 <div>
 
-<div border="2 solid white/10" bg="white/5" backdrop-blur-sm rounded-xl grid place-items-center text-center class="h-[55vh]" data-addr="slide-07.assets.image" data-asset-status="placeholder">
-  <div><div i-carbon:image text-6xl opacity-40 mx-auto /><div opacity-60 mt-2>데모 화면</div></div>
-</div>
+<img src="/assets/demo-risk.png" alt="데모 화면" class="rounded-xl shadow-2xl mx-auto" data-addr="slide-06.assets.image" data-asset-status="real">
 
 </div>
 
@@ -272,16 +243,16 @@ impl: "implemented"
 
 <v-clicks>
 
-<div data-addr="slide-07.content.callout.0" border="2 solid white/5" bg="white/5" backdrop-blur-sm rounded-lg px-5 py-3>
-<div flex items-center gap-2><div i-carbon:checkmark text-cyan-300 text-xl shrink-0 /><span font-medium text-lg>callout 항목 1</span></div><div text-sm opacity-70 mt-1 pl-7>샘플 설명 텍스트</div>
+<div data-addr="slide-06.content.callout.0" border="2 solid white/5" bg="white/5" backdrop-blur-sm rounded-lg px-5 py-3>
+<div flex items-center gap-2><div i-carbon:checkmark text-cyan-300 text-xl shrink-0 /><span font-medium text-lg>"일 시작했고, 아들과 합쳐 살아요"</span></div><div text-sm opacity-70 mt-1 pl-7>음성으로 상황을 말한다</div>
 </div>
 
-<div data-addr="slide-07.content.callout.1" border="2 solid white/5" bg="white/5" backdrop-blur-sm rounded-lg px-5 py-3>
-<div flex items-center gap-2><div i-carbon:checkmark text-amber-300 text-xl shrink-0 /><span font-medium text-lg>callout 항목 2</span></div><div text-sm opacity-70 mt-1 pl-7>샘플 설명 텍스트</div>
+<div data-addr="slide-06.content.callout.1" border="2 solid white/5" bg="white/5" backdrop-blur-sm rounded-lg px-5 py-3>
+<div flex items-center gap-2><div i-carbon:checkmark text-amber-300 text-xl shrink-0 /><span font-medium text-lg>🔴 기초연금·의료급여 끊길 위험</span></div><div text-sm opacity-70 mt-1 pl-7>받기가 아니라, 끊김을 먼저 짚는다</div>
 </div>
 
-<div data-addr="slide-07.content.callout.2" border="2 solid white/5" bg="white/5" backdrop-blur-sm rounded-lg px-5 py-3>
-<div flex items-center gap-2><div i-carbon:checkmark text-green-300 text-xl shrink-0 /><span font-medium text-lg>callout 항목 3</span></div><div text-sm opacity-70 mt-1 pl-7>샘플 설명 텍스트</div>
+<div data-addr="slide-06.content.callout.2" border="2 solid white/5" bg="white/5" backdrop-blur-sm rounded-lg px-5 py-3>
+<div flex items-center gap-2><div i-carbon:checkmark text-green-300 text-xl shrink-0 /><span font-medium text-lg>D-day · 해야 할 일 · 서류</span></div><div text-sm opacity-70 mt-1 pl-7>그래서 무엇을 언제 하나</div>
 </div>
 
 </v-clicks>
@@ -290,39 +261,39 @@ impl: "implemented"
 
 </div>
 
-<div mt-4 text-sm opacity-70 data-addr="slide-07.content.points">
-- points 항목 1
-- points 항목 2
-- points 항목 3
+<div mt-4 text-sm opacity-70 data-addr="slide-06.content.points">
+- 판정은 코드
+- 출처는 공식 URL
+- 음성 + 자막
 </div>
 
 <!--
-레이아웃 [demo-callout] — 슬롯: title, callout, points
+방금 보신 것: 말 한마디에 끊길 위험이 먼저 떴습니다. 받기가 아니라 끊김을요.
 -->
 
 ---
 class: px-14 py-10
-title: "architecture"
-glowSeed: 291
-glow: left
-slideId: "slide-08"
+title: "AI는 듣고, 코드가 판정한다"
+glowSeed: 290
+glow: full
+slideId: "slide-07"
 semanticLayout: "architecture"
-durationSeconds: 20
+durationSeconds: 25
 impl: "implemented"
 ---
 
-<h1 data-addr="slide-08.content.title">architecture</h1>
+<h1 data-addr="slide-07.content.title">AI는 듣고, 코드가 판정한다</h1>
 
 <div mt-8>
-  <div data-addr="slide-08.content.steps" border="2 solid blue-800" bg="blue-800/20" rounded-lg overflow-hidden>
+  <div data-addr="slide-07.content.steps" border="2 solid blue-800" bg="blue-800/20" rounded-lg overflow-hidden>
     <div bg="blue-800/40" px-5 py-3 flex items-center>
       <div i-carbon:flow text-blue-300 text-2xl mr-2 shrink-0 />
       <span font-bold text-xl>동작 흐름</span>
     </div>
     <div px-5 py-4 flex flex-col gap-1>
-      <div flex items-center gap-3 py-1 data-addr="slide-08.content.steps.0"><div w-6 h-6 shrink-0 grid place-items-center rounded-full bg="blue-800/60" text-blue-100 text-sm font-bold>1</div><div><div font-medium text-lg>steps 항목 1</div><div text-sm opacity-70>샘플 설명 텍스트</div></div></div>
-      <div flex items-center gap-3 py-1 data-addr="slide-08.content.steps.1"><div w-6 h-6 shrink-0 grid place-items-center rounded-full bg="blue-800/60" text-blue-100 text-sm font-bold>2</div><div><div font-medium text-lg>steps 항목 2</div><div text-sm opacity-70>샘플 설명 텍스트</div></div></div>
-      <div flex items-center gap-3 py-1 data-addr="slide-08.content.steps.2"><div w-6 h-6 shrink-0 grid place-items-center rounded-full bg="blue-800/60" text-blue-100 text-sm font-bold>3</div><div><div font-medium text-lg>steps 항목 3</div><div text-sm opacity-70>샘플 설명 텍스트</div></div></div>
+      <div flex items-center gap-3 py-1 data-addr="slide-07.content.steps.0"><div w-6 h-6 shrink-0 grid place-items-center rounded-full bg="blue-800/60" text-blue-100 text-sm font-bold>1</div><div><div font-medium text-lg>음성 이해</div><div text-sm opacity-70>비정형 말 → 슬롯 추출 (strict 함수호출)</div></div></div>
+      <div flex items-center gap-3 py-1 data-addr="slide-07.content.steps.1"><div w-6 h-6 shrink-0 grid place-items-center rounded-full bg="blue-800/60" text-blue-100 text-sm font-bold>2</div><div><div font-medium text-lg>결정론 판정</div><div text-sm opacity-70>변동 → 공식 끊김 사유 매칭 (코드)</div></div></div>
+      <div flex items-center gap-3 py-1 data-addr="slide-07.content.steps.2"><div w-6 h-6 shrink-0 grid place-items-center rounded-full bg="blue-800/60" text-blue-100 text-sm font-bold>3</div><div><div font-medium text-lg>공식 출처 카드</div><div text-sm opacity-70>단정 대신 근거 + URL</div></div></div>
     </div>
   </div>
 </div>
@@ -330,49 +301,20 @@ impl: "implemented"
 <div v-click mt-6 flex justify-center>
   <div border="2 solid white/5" bg="white/5" backdrop-blur-sm rounded-lg px-6 py-3 flex items-center gap-3>
     <div i-carbon:idea text-yellow-300 text-2xl shrink-0 />
-    <span text-lg><b>결과:</b> 핵심 결과 한 줄</span>
+    <span text-lg><b>결과:</b> 환각 없는 판정 — 틀려도 엉뚱한 결과가 안 나간다</span>
   </div>
 </div>
 
 <!--
-레이아웃 [architecture] — 슬롯: title, steps, result
--->
-
----
-class: px-14 py-10
-title: "before-after"
-glowSeed: 292
-glow: right
-slideId: "slide-09"
-semanticLayout: "before-after"
-durationSeconds: 20
-impl: "implemented"
----
-
-<h1 data-addr="slide-09.content.title">before-after</h1>
-
-<div mt-8 grid gap-4 items-center class="grid-cols-[1fr_auto_1fr]">
-  <div data-addr="slide-09.content.beforeCaption" border="2 solid red-800" bg="red-800/20" rounded-lg overflow-hidden>
-    <div bg="red-800/40" px-5 py-3 flex items-center><div i-carbon:close-outline text-red-300 text-2xl mr-2 /><span font-bold text-xl>기존</span></div>
-    <div px-5 py-4 text-lg opacity-90>기존 상태 설명</div>
-  </div>
-  <div i-carbon:arrow-right text-4xl opacity-50 mx-auto />
-  <div v-click data-addr="slide-09.content.afterCaption" border="2 solid green-800" bg="green-800/20" rounded-lg overflow-hidden>
-    <div bg="green-800/40" px-5 py-3 flex items-center><div i-carbon:checkmark-outline text-green-300 text-2xl mr-2 /><span font-bold text-xl>개선</span></div>
-    <div px-5 py-4 text-lg>개선된 상태 설명</div>
-  </div>
-</div>
-
-<!--
-레이아웃 [before-after] — 슬롯: title, beforeLabel, afterLabel, beforeCaption, afterCaption
+AI는 듣고 값만 뽑습니다. 자격 판정은 결정론 코드가 합니다. 그래서 똑똑함이 아니라 정직함이 차별점입니다.
 -->
 
 ---
 layout: center
-title: "big-number"
-glowSeed: 314
-glow: center
-slideId: "slide-10"
+title: "변동 미신고 부적격 지급, 최근 5년"
+glowSeed: 291
+glow: left
+slideId: "slide-08"
 semanticLayout: "big-number"
 durationSeconds: 20
 impl: "implemented"
@@ -380,247 +322,84 @@ impl: "implemented"
 
 <div class="text-center">
 
-<div class="opacity-70 tracking-wide" data-addr="slide-10.content.label">big-number</div>
+<div class="opacity-70 tracking-wide" data-addr="slide-08.content.label">변동 미신고 부적격 지급, 최근 5년</div>
 
-<div v-click class="my-3 text-7xl font-extrabold text-cyan-300 leading-none" data-addr="slide-10.content.number">3분</div>
+<div v-click class="my-3 text-7xl font-extrabold text-cyan-300 leading-none" data-addr="slide-08.content.number">1,140억</div>
 
-<div class="mt-4 opacity-55 text-sm max-w-xl mx-auto" data-addr="slide-10.content.caption">보조 설명 캡션</div>
+<div class="mt-4 opacity-55 text-sm max-w-xl mx-auto" data-addr="slide-08.content.caption">해외 ex-parte 자동갱신은 갱신율 +28%p (Health Affairs 2025)</div>
 
 </div>
 
 <!--
-레이아웃 [big-number] — 슬롯: label, number, caption
+문제의 크기는 5년 1,140억. 해외에선 정부 데이터로 미리 점검하는 ex-parte 방식이 갱신율을 28%p 올렸습니다. 우리가 그걸 당사자 편에서 합니다.
 -->
 
 ---
 class: px-14 py-10
-title: "card-grid"
-glowSeed: 315
-glow: bottom
-slideId: "slide-11"
-semanticLayout: "card-grid"
-durationSeconds: 20
-impl: "implemented"
----
-
-<h1 data-addr="slide-11.content.title">card-grid</h1>
-
-<div mt-6 grid grid-cols-3 gap-4 h-75>
-
-<v-clicks>
-
-  <div data-addr="slide-11.content.cards.0" border="2 solid white/5" rounded-lg overflow-hidden bg="white/5" backdrop-blur-sm h-full>
-    <div flex items-center bg="white/10" backdrop-blur px-3 py-2>
-      <div i-carbon:dot-mark text-cyan-300 text-xl mr-2 shrink-0 />
-      <div font-semibold text-lg>cards 항목 1</div>
-    </div>
-    <div px-4 py-3 flex flex-col gap-2>
-      <div text-sm opacity-80>샘플 설명 텍스트</div>
-    </div>
-  </div>
-
-  <div data-addr="slide-11.content.cards.1" border="2 solid white/5" rounded-lg overflow-hidden bg="white/5" backdrop-blur-sm h-full>
-    <div flex items-center bg="white/10" backdrop-blur px-3 py-2>
-      <div i-carbon:dot-mark text-amber-300 text-xl mr-2 shrink-0 />
-      <div font-semibold text-lg>cards 항목 2</div>
-    </div>
-    <div px-4 py-3 flex flex-col gap-2>
-      <div text-sm opacity-80>샘플 설명 텍스트</div>
-    </div>
-  </div>
-
-  <div data-addr="slide-11.content.cards.2" border="2 solid white/5" rounded-lg overflow-hidden bg="white/5" backdrop-blur-sm h-full>
-    <div flex items-center bg="white/10" backdrop-blur px-3 py-2>
-      <div i-carbon:dot-mark text-green-300 text-xl mr-2 shrink-0 />
-      <div font-semibold text-lg>cards 항목 3</div>
-    </div>
-    <div px-4 py-3 flex flex-col gap-2>
-      <div text-sm opacity-80>샘플 설명 텍스트</div>
-    </div>
-  </div>
-
-</v-clicks>
-
-</div>
-
-<!--
-레이아웃 [card-grid] — 슬롯: title, cards
--->
-
----
-class: px-14 py-10
-title: "timeline"
-glowSeed: 316
-glow: top
-slideId: "slide-12"
-semanticLayout: "timeline"
-durationSeconds: 20
-impl: "implemented"
----
-
-<h1 data-addr="slide-12.content.title">timeline</h1>
-
-<div mt-8>
-  <div data-addr="slide-12.content.steps" border="2 solid indigo-800" bg="indigo-800/20" rounded-lg overflow-hidden>
-    <div bg="indigo-800/40" px-5 py-3 flex items-center>
-      <div i-carbon:roadmap text-indigo-300 text-2xl mr-2 shrink-0 />
-      <span font-bold text-xl>동작 흐름</span>
-    </div>
-    <div px-5 py-4 flex flex-col gap-1>
-      <div flex items-center gap-3 py-1 data-addr="slide-12.content.steps.0"><div w-6 h-6 shrink-0 grid place-items-center rounded-full bg="indigo-800/60" text-indigo-100 text-sm font-bold>1</div><div><div font-medium text-lg>steps 항목 1</div><div text-sm opacity-70>샘플 설명 텍스트</div></div></div>
-      <div flex items-center gap-3 py-1 data-addr="slide-12.content.steps.1"><div w-6 h-6 shrink-0 grid place-items-center rounded-full bg="indigo-800/60" text-indigo-100 text-sm font-bold>2</div><div><div font-medium text-lg>steps 항목 2</div><div text-sm opacity-70>샘플 설명 텍스트</div></div></div>
-      <div flex items-center gap-3 py-1 data-addr="slide-12.content.steps.2"><div w-6 h-6 shrink-0 grid place-items-center rounded-full bg="indigo-800/60" text-indigo-100 text-sm font-bold>3</div><div><div font-medium text-lg>steps 항목 3</div><div text-sm opacity-70>샘플 설명 텍스트</div></div></div>
-    </div>
-  </div>
-</div>
-
-<!--
-레이아웃 [timeline] — 슬롯: title, steps
--->
-
----
-layout: center
-title: "기억에 남을 한 문장."
-glowSeed: 317
-glow: full
-slideId: "slide-13"
-semanticLayout: "quote"
-durationSeconds: 20
-impl: "implemented"
----
-
-<div class="text-center max-w-3xl mx-auto">
-
-<div class="text-6xl text-cyan-300/30 leading-none">&ldquo;</div>
-
-<blockquote class="text-2xl font-medium leading-relaxed" data-addr="slide-13.content.quote">기억에 남을 한 문장.</blockquote>
-
-<div class="mt-6 opacity-70" data-addr="slide-13.content.attribution">— quote</div>
-
-</div>
-
-<!--
-레이아웃 [quote] — 슬롯: quote, attribution
--->
-
----
-class: px-14 py-10
-title: "limitation-guardrail"
-glowSeed: 318
-glow: left
-slideId: "slide-14"
+title: "정직하게"
+glowSeed: 292
+glow: right
+slideId: "slide-09"
 semanticLayout: "limitation-guardrail"
-durationSeconds: 20
+durationSeconds: 25
 impl: "implemented"
 ---
 
-<h1 data-addr="slide-14.content.title">limitation-guardrail</h1>
+<h1 data-addr="slide-09.content.title">정직하게</h1>
 
 <div mt-8 grid grid-cols-2 gap-6 items-start>
-  <div data-addr="slide-14.content.limitations" border="2 solid amber-800" bg="amber-800/20" rounded-lg overflow-hidden>
+  <div data-addr="slide-09.content.limitations" border="2 solid amber-800" bg="amber-800/20" rounded-lg overflow-hidden>
     <div bg="amber-800/40" px-5 py-3 flex items-center>
       <div i-carbon:warning-alt text-amber-300 text-2xl mr-2 shrink-0 />
       <span font-bold text-xl>한계</span>
     </div>
     <div px-5 py-4 flex flex-col gap-1>
-      <div flex items-start gap-2 py-1 data-addr="slide-14.content.limitations.0">
+      <div flex items-start gap-2 py-1 data-addr="slide-09.content.limitations.0">
         <div i-carbon:dot-mark text-amber-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>limitations 항목 1</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>자격은 추정</div><div text-sm opacity-80>정확한 소득인정액은 본인인증 필요</div></div>
       </div>
-      <div flex items-start gap-2 py-1 data-addr="slide-14.content.limitations.1">
+      <div flex items-start gap-2 py-1 data-addr="slide-09.content.limitations.1">
         <div i-carbon:dot-mark text-amber-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>limitations 항목 2</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>대표 12개 정밀</div><div text-sm opacity-80>나머지는 잠재 후보로 표시</div></div>
       </div>
-      <div flex items-start gap-2 py-1 data-addr="slide-14.content.limitations.2">
+      <div flex items-start gap-2 py-1 data-addr="slide-09.content.limitations.2">
         <div i-carbon:dot-mark text-amber-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>limitations 항목 3</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>음성 폴백</div><div text-sm opacity-80>타이핑·스크린샷 백업 필수</div></div>
       </div>
     </div>
   </div>
-  <div v-click data-addr="slide-14.content.guardrails" border="2 solid green-800" bg="green-800/20" rounded-lg overflow-hidden>
+  <div v-click data-addr="slide-09.content.guardrails" border="2 solid green-800" bg="green-800/20" rounded-lg overflow-hidden>
     <div bg="green-800/40" px-5 py-3 flex items-center>
       <div i-carbon:shield-checkmark text-green-300 text-2xl mr-2 shrink-0 />
       <span font-bold text-xl>안전장치</span>
     </div>
     <div px-5 py-4 flex flex-col gap-1>
-      <div flex items-start gap-2 py-1 data-addr="slide-14.content.guardrails.0">
+      <div flex items-start gap-2 py-1 data-addr="slide-09.content.guardrails.0">
         <div i-carbon:checkmark text-green-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>guardrails 항목 1</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>판정은 결정론 코드</div><div text-sm opacity-80>AI 자유분류 금지</div></div>
       </div>
-      <div flex items-start gap-2 py-1 data-addr="slide-14.content.guardrails.1">
+      <div flex items-start gap-2 py-1 data-addr="slide-09.content.guardrails.1">
         <div i-carbon:checkmark text-green-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>guardrails 항목 2</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>단정 금지</div><div text-sm opacity-80>공식 확인 안내</div></div>
       </div>
-      <div flex items-start gap-2 py-1 data-addr="slide-14.content.guardrails.2">
+      <div flex items-start gap-2 py-1 data-addr="slide-09.content.guardrails.2">
         <div i-carbon:checkmark text-green-300 text-xl mt-1 shrink-0 />
-        <div><div font-bold>guardrails 항목 3</div><div text-sm opacity-80>샘플 설명 텍스트</div></div>
+        <div><div font-bold>정부 연계는 목업</div><div text-sm opacity-80>공공마이데이터 가정</div></div>
       </div>
     </div>
   </div>
 </div>
 
 <!--
-레이아웃 [limitation-guardrail] — 슬롯: title, limitations, guardrails
--->
-
----
-class: px-14 py-10
-title: "expansion-map"
-glowSeed: 319
-glow: right
-slideId: "slide-15"
-semanticLayout: "expansion-map"
-durationSeconds: 20
-impl: "implemented"
----
-
-<h1 data-addr="slide-15.content.title">expansion-map</h1>
-
-<div mt-6 grid grid-cols-3 gap-4 h-75>
-
-<v-clicks>
-
-  <div data-addr="slide-15.content.tiers.0" border="2 solid sky-800" bg="sky-800/20" rounded-lg overflow-hidden h-full>
-    <div bg="sky-800/40" px-4 py-2 flex items-center justify-center>
-      <span font-bold text-lg>tiers 항목 1</span>
-    </div>
-    <div px-4 py-4 flex flex-col gap-1>
-      <div text-sm opacity-80>샘플 설명 텍스트</div>
-    </div>
-  </div>
-
-  <div data-addr="slide-15.content.tiers.1" border="2 solid purple-800" bg="purple-800/20" rounded-lg overflow-hidden h-full>
-    <div bg="purple-800/40" px-4 py-2 flex items-center justify-center>
-      <span font-bold text-lg>tiers 항목 2</span>
-    </div>
-    <div px-4 py-4 flex flex-col gap-1>
-      <div text-sm opacity-80>샘플 설명 텍스트</div>
-    </div>
-  </div>
-
-  <div data-addr="slide-15.content.tiers.2" border="2 solid indigo-800" bg="indigo-800/20" rounded-lg overflow-hidden h-full>
-    <div bg="indigo-800/40" px-4 py-2 flex items-center justify-center>
-      <span font-bold text-lg>tiers 항목 3</span>
-    </div>
-    <div px-4 py-4 flex flex-col gap-1>
-      <div text-sm opacity-80>샘플 설명 텍스트</div>
-    </div>
-  </div>
-
-</v-clicks>
-
-</div>
-
-<!--
-레이아웃 [expansion-map] — 슬롯: title, tiers
+정직하게 짚습니다. 로그인 전 자격은 추정이고, 정확한 값은 본인인증이 필요합니다. 정부 연계 부분은 공공마이데이터를 가정한 목업입니다.
 -->
 
 ---
 layout: center
-title: "closing"
-glowSeed: 320
+title: "받는 걸 돕는 복지는 많습니다"
+glowSeed: 314
 glow: center
-slideId: "slide-16"
+slideId: "slide-10"
 semanticLayout: "closing"
 durationSeconds: 20
 impl: "implemented"
@@ -628,18 +407,18 @@ impl: "implemented"
 
 <div class="text-center">
 
-<h1 data-addr="slide-16.content.title">closing</h1>
+<h1 data-addr="slide-10.content.title">받는 걸 돕는 복지는 많습니다</h1>
 
-<div class="opacity-70 mt-3 max-w-2xl mx-auto" data-addr="slide-16.content.subtitle">부제목 — 한 줄 설명</div>
+<div class="opacity-70 mt-3 max-w-2xl mx-auto" data-addr="slide-10.content.subtitle">끊기지 않게 지키는 복지는, 여기서 시작합니다</div>
 
 </div>
 
-<div v-click class="mt-8" data-addr="slide-16.content.cta"><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm text-cyan-100"><span class="i-carbon:play" /> 데모 보기</div></div>
+<div v-click class="mt-8" data-addr="slide-10.content.cta"><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm text-cyan-100"><span class="i-carbon:play" /> 라이브 데모</div></div>
 
-<div class="mt-4 flex flex-wrap gap-2 justify-center" data-addr="slide-16.content.tags"><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm text-xs opacity-75">태그1</div><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm text-xs opacity-75">태그2</div><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm text-xs opacity-75">태그3</div></div>
+<div class="mt-4 flex flex-wrap gap-2 justify-center" data-addr="slide-10.content.tags"><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm text-xs opacity-75">어르신</div><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm text-xs opacity-75">음성</div><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm text-xs opacity-75">끊김 경고</div></div>
 
-<div class="mt-8" data-addr="slide-16.content.contact"><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm opacity-80"><span class="i-carbon:logo-github" /> github.com/team</div></div>
+<div class="mt-8" data-addr="slide-10.content.contact"><div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-4 py-1.5 text-sm opacity-80"><span class="i-carbon:logo-github" /> github.com/Strider1370/Hakathon</div></div>
 
 <!--
-레이아웃 [closing] — 슬롯: title, subtitle, cta, tags, contact
+받는 걸 돕는 복지는 많습니다. 끊기지 않게 지키는 복지는, 여기서 시작합니다. 감사합니다.
 -->

@@ -2,346 +2,160 @@
   "version": 1,
   "meta": {
     "engine": "slidev",
-    "title": "레이아웃 갤러리 (16종)",
+    "title": "받던 복지, 끊기기 전에",
     "language": "ko",
-    "presentationMinutes": 0
+    "presentationMinutes": 5
   },
   "slides": [
     {
       "id": "slide-01",
       "semanticLayout": "hero",
       "content": {
-        "eyebrow": "EYEBROW",
-        "title": "hero",
-        "subtitle": "부제목 — 한 줄 설명",
-        "footnote": "각주 / 태그"
+        "eyebrow": "복지 끊김 점검",
+        "title": "받던 복지, 끊기기 전에",
+        "subtitle": "어르신이 말로 점검하는 자격 변동 비서",
+        "footnote": "음성 · KRDS · 공공데이터"
       },
       "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [hero] — 슬롯: eyebrow, title, subtitle, footnote"
+      "speakerNotes": "복지의 진짜 문제는 못 받는 게 아니라, 받던 게 끊기는 겁니다. 우리는 그걸 끊기기 전에, 말로 점검합니다."
     },
     {
       "id": "slide-02",
       "semanticLayout": "problem-flow",
       "content": {
-        "title": "problem-flow",
+        "title": "복지는 받을 때가 아니라, 끊길 때 아프다",
         "items": [
-          {
-            "title": "items 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "items 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "items 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
+          { "title": "소득·가구가 바뀐다", "desc": "일을 시작하거나 가족과 합치면 자격이 변한다" },
+          { "title": "그대로 끊긴다", "desc": "갱신·서류를 놓치면 받던 게 멈춘다" },
+          { "title": "본인은 가장 늦게 안다", "desc": "환수 통지로 안다 — 5년 1,140억, 가산세·지급제한" }
         ]
       },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [problem-flow] — 슬롯: title, items"
+      "durationSeconds": 25,
+      "speakerNotes": "소득이 늘거나 가족과 합치면 자격이 바뀝니다. 본인은 모르고 지내다 환수 통지로 압니다. 최근 5년 부적격 지급이 1,140억, 가산세에 지급 제한까지 붙습니다."
     },
     {
       "id": "slide-03",
       "semanticLayout": "contrast",
       "content": {
-        "title": "contrast",
-        "lead": "리드 문장 (대비/맥락)",
-        "leftLabel": "기존",
+        "title": "방향이 반대다",
+        "lead": "받을 것을 찾아주는 서비스는 많다. 끊길 위험을 경고하는 건 없다.",
+        "leftLabel": "기존 (복지로·보조금24·토스)",
         "left": [
-          {
-            "title": "left 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "left 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "left 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
+          { "title": "받을 것 안내", "desc": "신규 신청·상향 중심" },
+          { "title": "앱·로그인·타이핑 전제", "desc": "어르신은 배제" },
+          { "title": "판정은 백오피스에", "desc": "당사자에겐 안 보임" }
         ],
-        "rightLabel": "개선",
+        "rightLabel": "우리",
         "right": [
-          {
-            "title": "right 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "right 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "right 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
+          { "title": "끊길 위험 경고", "desc": "유지·갱신 중심" },
+          { "title": "말로 점검", "desc": "어르신이 음성으로" },
+          { "title": "판정을 당사자 손에", "desc": "끊기기 전에 미리" }
         ]
       },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [contrast] — 슬롯: title, lead, leftLabel, left, rightLabel, right"
+      "durationSeconds": 25,
+      "speakerNotes": "받을 것 찾아주는 서비스는 많습니다. 복지멤버십도 그렇죠. 그런데 전부 방향이 받기입니다. 끊길 위험을 경고하는 건 없습니다. 방향을 뒤집었습니다."
     },
     {
       "id": "slide-04",
       "semanticLayout": "insight-statement",
       "content": {
-        "title": "insight-statement",
-        "subtitle": "부제목 — 한 줄 설명"
+        "title": "복지는 유지하는 동안 끊긴다",
+        "subtitle": "끊기기 전에, 말로 점검한다"
       },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [insight-statement] — 슬롯: title, subtitle"
+      "durationSeconds": 15,
+      "speakerNotes": "(한 박자 쉬고) 복지는 받는 순간이 아니라, 유지하는 동안 끊깁니다."
     },
     {
       "id": "slide-05",
       "semanticLayout": "product-overview",
       "content": {
-        "title": "product-overview",
+        "title": "세 단계를 한 흐름으로",
         "features": [
-          {
-            "title": "features 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "features 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "features 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
+          { "title": "말로 문진", "desc": "받는 혜택을 찾아준다" },
+          { "title": "변동 점검", "desc": "끊길 위험을 짚는다" },
+          { "title": "본인인증", "desc": "추정을 정확으로" }
         ]
       },
       "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [product-overview] — 슬롯: title, features"
+      "speakerNotes": "세 단계입니다. 말로 물어 받는 걸 찾고, 변동을 점검해 끊길 위험을 짚고, 본인인증하면 추정이 정확한 숫자로 바뀝니다. 직접 보시죠."
     },
     {
       "id": "slide-06",
-      "semanticLayout": "demo-fullscreen",
+      "semanticLayout": "demo-callout",
       "content": {
-        "title": "demo-fullscreen",
-        "subtitle": "부제목 — 한 줄 설명"
+        "title": "말 한마디면 된다",
+        "callout": [
+          { "title": "\"일 시작했고, 아들과 합쳐 살아요\"", "desc": "음성으로 상황을 말한다" },
+          { "title": "🔴 기초연금·의료급여 끊길 위험", "desc": "받기가 아니라, 끊김을 먼저 짚는다" },
+          { "title": "D-day · 해야 할 일 · 서류", "desc": "그래서 무엇을 언제 하나" }
+        ],
+        "points": [
+          { "title": "판정은 코드", "desc": "AI는 듣고, 코드가 판정" },
+          { "title": "출처는 공식 URL", "desc": "보건복지부·국세청·법령" },
+          { "title": "음성 + 자막", "desc": "어르신 이중 확인" }
+        ]
       },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [demo-fullscreen] — 슬롯: title, subtitle"
+      "assets": { "image": "presentation/assets/demo-risk.png" },
+      "durationSeconds": 10,
+      "speakerNotes": "방금 보신 것: 말 한마디에 끊길 위험이 먼저 떴습니다. 받기가 아니라 끊김을요."
     },
     {
       "id": "slide-07",
-      "semanticLayout": "demo-callout",
+      "semanticLayout": "architecture",
       "content": {
-        "title": "demo-callout",
-        "callout": [
-          {
-            "title": "callout 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "callout 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "callout 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
+        "title": "AI는 듣고, 코드가 판정한다",
+        "steps": [
+          { "title": "음성 이해", "desc": "비정형 말 → 슬롯 추출 (strict 함수호출)" },
+          { "title": "결정론 판정", "desc": "변동 → 공식 끊김 사유 매칭 (코드)" },
+          { "title": "공식 출처 카드", "desc": "단정 대신 근거 + URL" }
         ],
-        "points": [
-          {
-            "title": "points 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "points 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "points 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
-        ]
+        "result": "환각 없는 판정 — 틀려도 엉뚱한 결과가 안 나간다"
       },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [demo-callout] — 슬롯: title, callout, points"
+      "durationSeconds": 25,
+      "speakerNotes": "AI는 듣고 값만 뽑습니다. 자격 판정은 결정론 코드가 합니다. 그래서 똑똑함이 아니라 정직함이 차별점입니다."
     },
     {
       "id": "slide-08",
-      "semanticLayout": "architecture",
+      "semanticLayout": "big-number",
       "content": {
-        "title": "architecture",
-        "steps": [
-          {
-            "title": "steps 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "steps 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "steps 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
-        ],
-        "result": "핵심 결과 한 줄"
+        "label": "변동 미신고 부적격 지급, 최근 5년",
+        "number": "1,140억",
+        "caption": "해외 ex-parte 자동갱신은 갱신율 +28%p (Health Affairs 2025)"
       },
       "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [architecture] — 슬롯: title, steps, result"
+      "speakerNotes": "문제의 크기는 5년 1,140억. 해외에선 정부 데이터로 미리 점검하는 ex-parte 방식이 갱신율을 28%p 올렸습니다. 우리가 그걸 당사자 편에서 합니다."
     },
     {
       "id": "slide-09",
-      "semanticLayout": "before-after",
+      "semanticLayout": "limitation-guardrail",
       "content": {
-        "title": "before-after",
-        "beforeLabel": "기존",
-        "afterLabel": "개선",
-        "beforeCaption": "기존 상태 설명",
-        "afterCaption": "개선된 상태 설명"
+        "title": "정직하게",
+        "limitations": [
+          { "title": "자격은 추정", "desc": "정확한 소득인정액은 본인인증 필요" },
+          { "title": "대표 12개 정밀", "desc": "나머지는 잠재 후보로 표시" },
+          { "title": "음성 폴백", "desc": "타이핑·스크린샷 백업 필수" }
+        ],
+        "guardrails": [
+          { "title": "판정은 결정론 코드", "desc": "AI 자유분류 금지" },
+          { "title": "단정 금지", "desc": "공식 확인 안내" },
+          { "title": "정부 연계는 목업", "desc": "공공마이데이터 가정" }
+        ]
       },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [before-after] — 슬롯: title, beforeLabel, afterLabel, beforeCaption, afterCaption"
+      "durationSeconds": 25,
+      "speakerNotes": "정직하게 짚습니다. 로그인 전 자격은 추정이고, 정확한 값은 본인인증이 필요합니다. 정부 연계 부분은 공공마이데이터를 가정한 목업입니다."
     },
     {
       "id": "slide-10",
-      "semanticLayout": "big-number",
-      "content": {
-        "label": "big-number",
-        "number": "3분",
-        "caption": "보조 설명 캡션"
-      },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [big-number] — 슬롯: label, number, caption"
-    },
-    {
-      "id": "slide-11",
-      "semanticLayout": "card-grid",
-      "content": {
-        "title": "card-grid",
-        "cards": [
-          {
-            "title": "cards 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "cards 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "cards 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
-        ]
-      },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [card-grid] — 슬롯: title, cards"
-    },
-    {
-      "id": "slide-12",
-      "semanticLayout": "timeline",
-      "content": {
-        "title": "timeline",
-        "steps": [
-          {
-            "title": "steps 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "steps 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "steps 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
-        ]
-      },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [timeline] — 슬롯: title, steps"
-    },
-    {
-      "id": "slide-13",
-      "semanticLayout": "quote",
-      "content": {
-        "quote": "기억에 남을 한 문장.",
-        "attribution": "quote"
-      },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [quote] — 슬롯: quote, attribution"
-    },
-    {
-      "id": "slide-14",
-      "semanticLayout": "limitation-guardrail",
-      "content": {
-        "title": "limitation-guardrail",
-        "limitations": [
-          {
-            "title": "limitations 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "limitations 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "limitations 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
-        ],
-        "guardrails": [
-          {
-            "title": "guardrails 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "guardrails 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "guardrails 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
-        ]
-      },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [limitation-guardrail] — 슬롯: title, limitations, guardrails"
-    },
-    {
-      "id": "slide-15",
-      "semanticLayout": "expansion-map",
-      "content": {
-        "title": "expansion-map",
-        "tiers": [
-          {
-            "title": "tiers 항목 1",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "tiers 항목 2",
-            "desc": "샘플 설명 텍스트"
-          },
-          {
-            "title": "tiers 항목 3",
-            "desc": "샘플 설명 텍스트"
-          }
-        ]
-      },
-      "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [expansion-map] — 슬롯: title, tiers"
-    },
-    {
-      "id": "slide-16",
       "semanticLayout": "closing",
       "content": {
-        "title": "closing",
-        "subtitle": "부제목 — 한 줄 설명",
-        "cta": "데모 보기",
-        "tags": [
-          "태그1",
-          "태그2",
-          "태그3"
-        ],
-        "contact": "github.com/team"
+        "title": "받는 걸 돕는 복지는 많습니다",
+        "subtitle": "끊기지 않게 지키는 복지는, 여기서 시작합니다",
+        "cta": "라이브 데모",
+        "tags": ["어르신", "음성", "끊김 경고"],
+        "contact": "github.com/Strider1370/Hakathon"
       },
       "durationSeconds": 20,
-      "speakerNotes": "레이아웃 [closing] — 슬롯: title, subtitle, cta, tags, contact"
+      "speakerNotes": "받는 걸 돕는 복지는 많습니다. 끊기지 않게 지키는 복지는, 여기서 시작합니다. 감사합니다."
     }
   ]
 }
