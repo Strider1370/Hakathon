@@ -1,0 +1,920 @@
+[
+  {
+    "id": "basic-pension",
+    "name": "기초연금",
+    "agency": "보건복지부 (연금정책관 기초연금과); 신청·조사 업무 국민연금공단 위탁",
+    "summary": "만 65세 이상 노인 중 소득인정액이 선정기준액 이하인 하위 70%에게 매월 일정액을 지급하는 노후소득보장 연금.",
+    "amount": "기준연금액(월 최대): 2026년 349,700원, 2025년 342,510원. 선정기준액(소득인정액): 2026년 단독가구 247만원·부부가구 395.2만원, 2025년 단독가구 228만원·부부가구 364.8만원. 부부 모두 수급 시 각자 산정액의 20% 감액. (출처: 보건복지부 보도자료·정부24)",
+    "rules": {
+      "eligibility": [
+        "age_gte(65)",
+        "nationality_is(KR)",
+        "resides_in_country(true)",
+        "income_recognized_below(selectionCriteria)",
+        "selectionCriteria == (household=='single' ? 2470000 : 3952000) // 2026 기준, 단위 원/월",
+        "income_recognized == income_evaluated + asset_converted_income"
+      ],
+      "slots": [
+        "applicantAge",
+        "householdType (단독|부부)",
+        "incomeRecognized",
+        "earnedIncome",
+        "pensionIncome",
+        "generalProperty",
+        "financialAssets",
+        "debt",
+        "isPublicPensioner (공무원·사학·군인연금 수급 시 제외 여부 확인)"
+      ]
+    },
+    "renewal": {
+      "type": "annual_review",
+      "renewWhen": "최초 결정 후 매년 소득인정액 정기 재산정(전국 단위 확인조사). 선정기준액·기준연금액은 매년 보건복지부 장관 고시로 갱신(물가변동률 반영).",
+      "cutoffTriggers": [
+        "소득(근로·연금·사업소득 등) 증가로 소득인정액이 선정기준액 초과",
+        "재산(부동산·금융재산) 증가 또는 부채 감소로 소득환산액 상승 → 소득인정액 초과",
+        "가구 형태 변동: 단독→부부 등 가구 구성 변경으로 적용 선정기준액·산정액 변동",
+        "배우자 소득·재산 변동(부부가구는 합산 산정)",
+        "국외 이주·국적 상실 등 거주·자격요건 상실",
+        "수급자 사망",
+        "미신고 소득·재산이 정기 확인조사·현장조사로 적발"
+      ],
+      "note": "세대구성 등 변동 시 국민연금공단 직원이 현장조사로 확인. 변동 미신고로 과지급된 경우 과오급금 환수 가능. 부정수급 적발 시 지급 정지 및 환수."
+    },
+    "deadline": "상시 신청. 만 65세 생일이 속한 달의 1개월 전부터 신청 가능(신청일이 속한 달분부터 지급).",
+    "documents": [
+      "신분증",
+      "사회복지서비스 및 급여 제공(변경) 신청서",
+      "소득·재산 신고서",
+      "금융정보 등(금융·신용·보험정보) 제공 동의서(본인 및 배우자)",
+      "본인 명의 통장 사본"
+    ],
+    "applyChannel": "읍·면·동 행정복지센터(주민센터), 전국 국민연금공단 지사, 복지로(온라인)",
+    "applyHowOneLine": "주소지 읍·면·동 행정복지센터나 국민연금공단 지사에 방문하거나 복지로에서 온라인 신청.",
+    "applyUrl": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001164",
+    "sources": [
+      {
+        "title": "2026년 노인 단독가구, 소득인정액 월 247만 원 이하면 기초연금 받는다",
+        "url": "https://www.mohw.go.kr/board.es?act=view&bid=0027&list_no=1488478&mid=a10503010100",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "2025년 노인 단독가구, 소득인정액 월 228만 원 이하면 기초연금 받는다",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1484197&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "기초연금 (민원 안내 및 신청)",
+        "url": "https://www.gov.kr/portal/service/serviceInfo/SSE000000170",
+        "publisher": "정부24",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "복지서비스 상세(중앙) - 기초연금",
+        "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001164",
+        "publisher": "복지로(보건복지부)",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "기초연금 지급대상자 선정기준액, 기준연금액 및 소득인정액 산정 세부기준에 관한 고시",
+        "url": "https://www.law.go.kr/LSW//admRulInfoP.do?admRulSeq=2100000253276&chrClsCd=010201",
+        "publisher": "국가법령정보센터",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "확인",
+      "renewal": "부분확인",
+      "documents": "확인"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "livelihood-benefit",
+    "name": "생계급여 (국민기초생활보장)",
+    "agency": "보건복지부 (기초생활보장과)",
+    "summary": "소득인정액이 기준 중위소득 32% 이하인 가구에 선정기준액과 소득인정액의 차액을 매월 보충 지급하는 최저생활보장 급여.",
+    "amount": "선정기준액(=급여기준, 기준 중위소득의 32%): 2026년 1인 820,556원·2인 1,343,773원·3인 1,714,892원·4인 2,078,316원 / 2025년 1인 765,444원·2인 1,258,451원·3인 1,608,113원·4인 1,951,287원. 실지급액 = 가구별 선정기준액 − 소득인정액(차액 보충). (출처: 보건복지부 보도자료)",
+    "rules": {
+      "eligibility": [
+        "income_recognized_below(selectionCriteria)",
+        "selectionCriteria == median_income(householdSize) * 0.32",
+        "income_recognized == income_evaluated + asset_converted_income",
+        "income_evaluated == actual_income - work_income_deduction - expense_deduction",
+        "dependent_obligor_rule_applies(false) // 생계급여는 부양의무자 기준 미적용(부양의무자 고소득·고재산 예외 제외)"
+      ],
+      "slots": [
+        "householdSize",
+        "incomeRecognized",
+        "earnedIncome",
+        "businessIncome",
+        "propertyIncome",
+        "generalProperty",
+        "financialAssets",
+        "vehicle",
+        "debt",
+        "rentContractType"
+      ]
+    },
+    "renewal": {
+      "type": "periodic_recheck",
+      "renewWhen": "연 2회 정기 확인조사로 소득·재산 재산정. 기준 중위소득(선정기준액)은 매년 인상 고시.",
+      "cutoffTriggers": [
+        "근로·사업·재산소득 증가로 소득인정액이 선정기준액(중위 32%) 초과",
+        "재산(부동산·금융재산·자동차) 증가 또는 부채 감소로 소득환산액 상승",
+        "가구원 수 변동(가구 분리·합가, 출생·사망)으로 적용 선정기준액 변동",
+        "취업·소득 발생 등 변동사항 미신고가 정기 확인조사로 적발",
+        "자동차 등 재산 은닉 등 부정수급 적발"
+      ],
+      "note": "변동 미신고로 급여가 과지급되면 그 전부 또는 일부가 환수되고 보장이 중지될 수 있으며, 부정수급으로 판정되면 보장중지·급여환수와 함께 고발조치될 수 있음."
+    },
+    "deadline": "상시 신청 (특정 기한 없음).",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "신분증",
+      "금융정보 등 제공 동의서(가구원 전체)",
+      "소득·재산 확인 서류",
+      "가족관계증명서",
+      "임대차계약서 등 임대차관계 증빙서류 또는 사용대차 확인서",
+      "본인 명의 통장 사본"
+    ],
+    "applyChannel": "주소지 관할 읍·면·동 행정복지센터(주민센터), 복지로(온라인)",
+    "applyHowOneLine": "주소지 읍·면·동 행정복지센터를 방문 신청하거나 복지로에서 온라인 신청.",
+    "applyUrl": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001132",
+    "sources": [
+      {
+        "title": "2026년도 기준 중위소득 6.51% 역대 최대로 인상",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1487098&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "2025년도 기준 중위소득 6.42%로 역대 최대 인상",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1482430&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "수급자선정기준 (기초생활보장)",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10708010300",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "복지서비스 상세(중앙) - 생계급여(맞춤형 급여)",
+        "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001132",
+        "publisher": "복지로(보건복지부)",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "기초생활보장 관리받기 - 수급자격 변동 및 부정수급 처리",
+        "url": "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=1533&ccfNo=4&cciNo=1&cnpClsNo=2",
+        "publisher": "찾기쉬운 생활법령정보(법제처)",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "확인",
+      "renewal": "부분확인",
+      "documents": "확인"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "disability-pension",
+    "name": "장애인연금",
+    "agency": "보건복지부 (신청·접수: 읍·면·동 행정복지센터 / 시·군·구청)",
+    "summary": "근로능력의 상실 또는 현저한 감소로 소득이 줄어든 18세 이상 중증장애인에게 매월 기초급여와 부가급여를 지급하여 생활 안정을 지원하는 공적 연금 제도.",
+    "amount": "2026년 기준 기초급여 월 349,700원(18~64세) + 부가급여 월 30,000원~439,700원(소득계층·연령별 차등). 단독가구 최대 약 월 439,700원.",
+    "rules": {
+      "eligibility": [
+        "age_gte(18)",
+        "registered_disability_severe()",
+        "income_recognized_lte(selection_threshold)",
+        "household_type_in(['single','couple'])"
+      ],
+      "slots": [
+        "birthDate",
+        "disabilityDegree",
+        "householdType",
+        "spouseExists",
+        "monthlyIncome",
+        "propertyValue",
+        "benefitTier"
+      ]
+    },
+    "renewal": {
+      "type": "periodic_recheck",
+      "renewWhen": "신규 신청 후 자동 지급 유지되나, 장애정도 재심사 대상이 되면 국민연금공단 장애심사를 다시 받아야 하며, 소득·재산 변동에 따라 매년 확인조사가 이루어짐.",
+      "cutoffTriggers": [
+        "장애정도 재심사 결과 중증장애인 기준(종전 1·2급 및 3급 중복) 미달로 등급 하락 시 자격 상실",
+        "소득인정액이 선정기준액(2026년 단독 140만원/부부 224만원) 초과 시",
+        "65세 도달 시 기초급여 종료(부가급여는 기초연금 등으로 전환·조정)",
+        "수급자 사망 또는 국외 이주",
+        "거주불명 등록 등 주민등록 말소"
+      ],
+      "note": "별도 재신청 없이 지급이 유지되는 것이 원칙이나, 장애정도 재심사·소득재산 확인조사로 자격이 변동될 수 있음. 65세 도달 시 기초급여가 종료되는 점에 유의."
+    },
+    "deadline": "상시 신청(연중 접수). 신청일 기준으로 자격 판정하므로 별도 마감 없음.",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "신분증",
+      "소득·재산 신고서",
+      "금융정보 등 제공 동의서(본인 및 배우자)",
+      "통장 사본(본인 명의)",
+      "(필요시) 장애정도 심사용 진단서·검사결과 등 의료자료",
+      "(대리신청 시) 위임장 및 대리인 신분증"
+    ],
+    "applyChannel": "읍·면·동 행정복지센터 방문 또는 복지로(bokjiro.go.kr) 온라인 신청",
+    "applyHowOneLine": "주소지 읍·면·동 행정복지센터를 방문하거나 복지로에서 온라인으로 신청하면 약 1개월 내 결정·지급됩니다.",
+    "applyUrl": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do",
+    "sources": [
+      {
+        "title": "장애인연금 개요 - 장애인자립기반",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10710030100",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "「장애인연금법」에 따른 장애인연금 - 찾기쉬운 생활법령정보",
+        "url": "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=916&ccfNo=2&cciNo=2&cnpClsNo=1",
+        "publisher": "법제처 찾기쉬운 생활법령정보",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "high",
+      "renewal": "medium",
+      "documents": "medium"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "energy-voucher",
+    "name": "에너지바우처",
+    "agency": "산업통상자원부 / 한국에너지공단 (신청·접수: 읍·면·동 행정복지센터)",
+    "summary": "에너지 취약계층이 전기·도시가스·지역난방·등유·LPG·연탄 등을 구입할 수 있도록 냉방(하절기)·난방(동절기) 비용을 바우처로 지원하는 연 단위 신청제 사업.",
+    "amount": "2026년도 총 지원금액: 1인 세대 295,200원, 2인 세대 407,500원, 3인 세대 532,700원, 4인 이상 세대 701,300원(하절기+동절기 합산).",
+    "rules": {
+      "eligibility": [
+        "basic_livelihood_recipient_in(['생계급여','의료급여','주거급여','교육급여'])",
+        "household_has_vulnerable_member()",
+        "member_is_elderly_born_on_or_before('1961-12-31') OR member_is_infant_born_on_or_after('2019-01-01') OR member_is_disabled() OR member_is_pregnant() OR member_has_severe_or_rare_disease() OR single_parent_family() OR child_headed_family() OR multichild_household()"
+      ],
+      "slots": [
+        "basicLivelihoodType",
+        "householdSize",
+        "vulnerableMemberType",
+        "memberBirthDate",
+        "existingVoucherEnrolled"
+      ]
+    },
+    "renewal": {
+      "type": "annual_reapply",
+      "renewWhen": "매년 신청 기간(2026년의 경우 6월 15일부터)에 신규·갱신 신청을 해야 함. 신청 기간 내에 신청하지 않으면 해당 연도 지원을 받지 못함(연 단위 신청제).",
+      "cutoffTriggers": [
+        "해당 연도 신청 기간(2026년 6월 15일~12월 31일) 내 미신청 시 그 해 미지원",
+        "기초생활수급 자격(생계·의료·주거·교육급여) 상실 시",
+        "세대 내 세대원 특성 기준(노인·영유아·장애인·임산부 등) 미해당으로 변동 시",
+        "보장시설 입소, 사망, 전출입 등 세대 구성 변동",
+        "사용 기간(2026.7.1~2027.5.31) 경과 시 잔액 소멸"
+      ],
+      "note": "연 단위 신청제로, 매년 신청 기간을 놓치면 그 해 지원을 받을 수 없으므로 반드시 신청 기간 내 접수해야 함. 전년도 수급자도 자격 재확인 대상."
+    },
+    "deadline": "2026년도 신청 마감: 2026년 12월 31일 (사용 기간: 2026.7.1~2027.5.31)",
+    "documents": [
+      "에너지이용권(바우처) 발급 신청서",
+      "신분증",
+      "(대리신청 시) 위임장 및 대리인 신분증",
+      "(세대원 특성 입증 필요시) 장애인등록증·진단서·임신 확인서 등 증빙서류"
+    ],
+    "applyChannel": "읍·면·동 행정복지센터 방문 또는 복지로(bokjiro.go.kr) 온라인 신청",
+    "applyHowOneLine": "신청 기간 내에 주소지 읍·면·동 행정복지센터를 방문하거나 복지로에서 온라인으로 신청하세요(거동 불편 시 대리신청 가능).",
+    "applyUrl": "https://www.energyv.or.kr/info/apl_info.do",
+    "sources": [
+      {
+        "title": "에너지바우처 지원내용",
+        "url": "https://www.energyv.or.kr/info/support_info.do",
+        "publisher": "한국에너지공단 에너지바우처",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "에너지바우처 신청안내",
+        "url": "https://www.energyv.or.kr/info/apl_info.do",
+        "publisher": "한국에너지공단 에너지바우처",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "복지서비스 상세 - 에너지바우처",
+        "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000072",
+        "publisher": "복지로",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "high",
+      "renewal": "high",
+      "documents": "medium"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "eitc-ctc",
+    "name": "근로장려금·자녀장려금",
+    "agency": "국세청(홈택스)",
+    "summary": "일은 하지만 소득이 적은 근로·사업·종교인 가구에 근로장려금을, 18세 미만 부양자녀가 있는 저소득 가구에 자녀장려금을 지급하여 소득을 지원하고 근로를 유인하는 제도. 연 1회 정기신청(5월)이 원칙이며 근로소득자는 반기신청도 가능.",
+    "amount": "근로장려금: 단독가구 최대 165만원, 홑벌이가구 최대 285만원, 맞벌이가구 최대 330만원. 자녀장려금: 부양자녀 1인당 최대 100만원(최소 50만원). 소득구간에 따라 산정·차등 지급(정확한 구간별 금액은 국세청 산정표/모의계산 참조).",
+    "rules": {
+      "eligibility": [
+        "household_income_below(threshold_by_type)  // 근로장려금: 단독가구 2,200만원 미만, 홑벌이가구 3,200만원 미만, 맞벌이가구 4,400만원 미만 (직전 과세연도 부부합산 총소득)",
+        "ctc_household_income_below(7.0e7)  // 자녀장려금: 부부합산 총소득 7,000만원 미만",
+        "property_below(2.4e8)  // 직전연도 6.1. 기준 가구원 전체 재산 합계 2.4억원 미만 (1.7억원 이상 시 50% 감액 지급)",
+        "has_qualifying_income  // 근로·사업·종교인 소득이 있을 것",
+        "has_dependent_child_under_18  // 자녀장려금: 18세 미만 부양자녀 보유",
+        "not_excluded_taxpayer  // 대한민국 국적, 다른 거주자의 부양자녀가 아닐 것 등 제외요건 미해당"
+      ],
+      "slots": [
+        "household_type(단독/홑벌이/맞벌이)",
+        "annual_income(부부합산 총소득)",
+        "total_property(가구원 전체 재산, 직전연도 6.1. 기준)",
+        "dependent_children_under_18(수, 자녀장려금)",
+        "income_type(근로/사업/종교인)"
+      ]
+    },
+    "renewal": {
+      "type": "annual_reapply",
+      "renewWhen": "매년 정기신청 5.1.~5.31.(법정기한, 사정에 따라 6.1.까지 연장될 수 있음). 자동신청 신청 시 향후 2년간 자동 신청됨. 근로소득자는 반기신청(상반기 9.1.~9.15., 하반기 다음해 3.1.~3.15.) 선택 가능.",
+      "cutoffTriggers": [
+        "소득 증가로 단독/홑벌이/맞벌이 가구 총소득 기준(2,200/3,200/4,400만원) 초과",
+        "자녀장려금 부부합산 총소득 7,000만원 초과",
+        "재산 2.4억원 초과(또는 1.7억~2.4억 구간 진입 시 50% 감액)",
+        "부양자녀가 18세 도달 등으로 자녀장려금 요건 상실",
+        "정기신청 기한(5월) 경과 후 기한 후 신청 시 산정금액의 5~10% 감액",
+        "사실과 다른 신청·환수 사유 발생 시 지급액 환수"
+      ],
+      "note": "매년 새로 신청해야 지급되는 1회성 지급제도(자동 갱신 아님). 자동신청 동의 시에만 2년간 자동 신청 처리. 기한 후 신청(6.2.~12.1.)은 가능하나 감액 지급."
+    },
+    "deadline": "정기신청: 매년 5.1.~5.31.(법정기한). 기한 후 신청: 6.2.~12.1.(감액). 반기신청(근로소득자): 상반기분 9.1.~9.15., 하반기분 다음해 3.1.~3.15.",
+    "documents": [
+      "별도 제출서류 없음(국세청 보유자료로 심사) — 소득·재산자료가 자동 반영됨",
+      "안내문 수령 시: 개별인증번호(ARS·홈택스 신청 시 입력)",
+      "추가 입증 필요 시: 사업자등록 사실 증빙, 부양자녀 관계 증빙 등(개별 요청 시)"
+    ],
+    "applyChannel": "홈택스(PC/손택스 앱), ARS 전화(1544-9944), 안내문 QR코드, 장려금 상담센터(1566-3636) 대리신청, 세무서",
+    "applyHowOneLine": "5월에 홈택스·손택스 또는 ARS(1544-9944)로 개별인증번호 입력해 신청(별도 서류 불필요).",
+    "applyUrl": "https://hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index_pp.xml&tmIdx=45&tm2lIdx=4501000000&tm3lIdx=4501030000",
+    "sources": [
+      {
+        "title": "국세정책/제도 > 근로·자녀장려금 > 신청기간 및 방법",
+        "url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=238977&mi=40397",
+        "publisher": "국세청",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "국세정책/제도 > 근로·자녀장려금 > 신청자격",
+        "url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2452&cntntsId=7783",
+        "publisher": "국세청",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "근로·자녀장려금 신청 (홈택스)",
+        "url": "https://hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index_pp.xml&tmIdx=45&tm2lIdx=4501000000&tm3lIdx=4501030000",
+        "publisher": "국세청 홈택스",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "근로장려금 신청 (정부24)",
+        "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/105100000001",
+        "publisher": "행정안전부 정부24",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "high — 소득·재산 기준(2,200/3,200/4,400만원, 자녀 7,000만원, 재산 2.4억) 국세청 공식 확인. 구간별 산정금액은 모의계산 권장.",
+      "renewal": "high — 정기신청 5월, 반기신청 일정, 기한후 감액, 자동신청 2년 국세청 공식 확인.",
+      "documents": "high — 국세청 보유자료 기반 심사로 별도 제출서류 원칙적으로 불필요(공식 확인)."
+    },
+    "sampleData": true
+  },
+  {
+    "id": "near-poor",
+    "name": "차상위계층 확인",
+    "agency": "보건복지부(읍·면·동 주민센터 / 복지로)",
+    "summary": "기초생활보장 수급자는 아니지만 소득인정액이 기준 중위소득 50% 이하인 저소득 가구를 '차상위계층'으로 확인·관리하는 사업. 차상위 확인을 받으면 차상위 본인부담경감, 자활, 문화누리카드 등 각종 복지 혜택의 자격 근거가 된다.",
+    "amount": "직접 현금지급 사업이 아니라 '차상위계층 자격 확인' 사업. 확인 시 차상위 대상 각종 감면·지원사업(본인부담경감, 자산형성지원, 문화누리카드, 통신·전기요금 감면 등)의 신청 자격이 부여됨. (개별 연계사업별 지원액은 해당 사업 기준 참조)",
+    "rules": {
+      "eligibility": [
+        "not_basic_livelihood_recipient  // 국민기초생활보장 수급자가 아닐 것",
+        "income_recognized_below(median_50pct)  // 소득인정액이 가구 기준 중위소득 50% 이하 (2026년 1인가구 약 1,282,119원 이하)",
+        "income_recognized = income_evaluated + property_income_conversion  // 소득인정액 = 소득평가액 + 재산의 소득환산액",
+        "property_and_basic_deduction_applied  // 재산은 기본재산액·부채 공제 후 소득환산율 적용해 산정"
+      ],
+      "slots": [
+        "household_size(가구원 수)",
+        "income_recognized(소득인정액 = 소득평가액 + 재산의 소득환산액)",
+        "actual_income(근로·사업·재산·이전소득 등 실제소득)",
+        "total_property(재산, 지역별 기본재산액 공제 후)",
+        "current_basic_livelihood_status(기초수급 여부)"
+      ]
+    },
+    "renewal": {
+      "type": "periodic_recheck",
+      "renewWhen": "확인 후에도 소득·재산 변동에 대한 정기 확인조사(연차별 확인조사) 및 변동 발생 시 수시 조사를 통해 자격을 재확인. 차상위계층 확인서는 발급일 기준 유효하며 변동 시 갱신 필요.",
+      "cutoffTriggers": [
+        "소득·재산 증가로 소득인정액이 기준 중위소득 50% 초과 → 차상위 자격 상실",
+        "소득인정액이 더 낮아져 기초생활보장 수급자로 편입 → 차상위에서 수급자로 경계 이동(차상위 확인 종료)",
+        "기초생활보장 수급 탈락(소득 증가) → 수급자에서 차상위 경계로 이동(차상위 확인 대상 진입)",
+        "가구원 변동(분가·합가·전입·사망)으로 가구 규모·소득인정액 변동",
+        "확인조사 미응답·자료 미제출로 자격 확인 불가"
+      ],
+      "note": "기초생활보장(생계 중위 32%/의료 40%/주거 48%/교육 50%)과 차상위(중위 50%)는 소득인정액 경계로 연속되어, 소득 증감에 따라 수급자↔차상위↔비대상으로 이동. 차상위는 별도 확인조사로 관리된다."
+    },
+    "deadline": "상시 신청(연중 신청 가능). 별도 신청기한 없음.",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "금융정보등 제공동의서(가구원 전체)",
+      "신분증(본인 확인용)",
+      "대리신청 시: 위임장 및 대리인 신분증(사회보장급여 관련 공통서식 별지 서식)",
+      "필요 시: 소득·재산 확인 관련 증빙(임대차계약서, 부채증명 등 — 개별 요청 시)"
+    ],
+    "applyChannel": "주소지 읍·면·동 주민센터 방문 신청 / 복지로(온라인) / 정부24",
+    "applyHowOneLine": "읍·면·동 주민센터에 방문하거나 복지로에서 사회보장급여 신청서·금융정보제공동의서를 제출해 차상위계층 확인을 신청(수수료 무료).",
+    "applyUrl": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003265",
+    "sources": [
+      {
+        "title": "수급자 선정기준(소득인정액 산정·기준 중위소득) < 기초생활보장 < 정책",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10708010300",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "기준 중위소득 < 기초생활보장 < 정책",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10708010900",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "차상위계층 확인서 발급 (민원안내 및 신청)",
+        "url": "https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A05003&CappBizCD=13520000098",
+        "publisher": "행정안전부 정부24",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "복지서비스 상세(중앙) 차상위계층 확인",
+        "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003265",
+        "publisher": "보건복지부 복지로",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "high — 소득인정액 기준 중위소득 50% 이하 기준 및 소득인정액 산정식 보건복지부 공식 확인. 2026년 가구별 정확 금액은 기준 중위소득 고시표 참조.",
+      "renewal": "medium — 정기/수시 확인조사로 관리됨은 확인되나, 차상위 확인조사 주기의 구체적 연차 표현은 사업별 지침에 따라 다를 수 있어 일부 미확인.",
+      "documents": "high — 사회보장급여 신청서·금융정보제공동의서, 무료, 읍면동/복지로/정부24 신청 공식 확인."
+    },
+    "sampleData": true
+  },
+  {
+    "id": "emergency-welfare",
+    "name": "긴급복지지원",
+    "agency": "보건복지부 / 시·군·구청, 보건복지상담센터(129)",
+    "summary": "갑작스러운 위기상황(주소득자 사망·실직·질병, 화재, 가정폭력 등)으로 생계유지가 곤란한 저소득 가구에 생계·의료·주거·교육 등을 신속하게 한시 지원하는 제도. 선지원 후처리 원칙으로 운영된다.",
+    "amount": "생계지원 4인 기준 월 약 1,860,000원(연도별 고시), 의료지원 회당 최대 300만원, 주거·교육 등 항목별 별도 기준. 생계지원은 원칙 1개월(최대 6개월), 의료지원 최대 2회 등 항목별 상이.",
+    "rules": {
+      "eligibility": [
+        "crisis_event_occurred()",
+        "income_below(median*0.75)",
+        "asset_below(threshold_by_region)",
+        "financial_asset_below(threshold)",
+        "main_earner_incapacitated_or_lost()"
+      ],
+      "slots": [
+        "위기상황 유형(사망/실직/질병/화재/가정폭력 등)",
+        "위기상황 발생 시점",
+        "가구원 수",
+        "가구 월 소득",
+        "재산·금융재산 규모",
+        "필요 지원 항목(생계/의료/주거/교육 등)"
+      ]
+    },
+    "renewal": {
+      "type": "none",
+      "renewWhen": "정기 갱신 없음. 동일 위기상황으로 추가 지원이 필요하면 시·군·구청 긴급지원심의위원회 심의를 거쳐 연장 가능(생계 최대 6개월 등 항목별 한도 내).",
+      "cutoffTriggers": [
+        "지원 기간(생계 1개월~최대 6개월 등) 종료",
+        "위기상황 해소(소득·재산 회복)",
+        "소득·재산 기준 초과 확인(사후조사)",
+        "타 공적급여(국민기초생활보장 등)로 전환"
+      ],
+      "note": "긴급복지는 위기상황에 대한 한시적 단기지원이므로 정기 갱신 개념이 없다. 동일 사유로 재지원받으려면 지원 종료(생계의 경우 마지막 지원일)로부터 원칙적으로 2년이 경과해야 하는 등 재신청 제한이 있다. 한시 지원 종료 후에는 즉시 동일 사유 재신청이 제한되며, 새로운 위기상황 발생 시 별도 신청 가능."
+    },
+    "deadline": "상시 신청(위기상황 발생 시 즉시). 위기상황 발생 후 신속 신청 권장. 별도 모집 마감 없음.",
+    "documents": [
+      "신분증(주민등록증 등)",
+      "긴급지원 신청서(읍·면·동 또는 시·군·구 비치)",
+      "위기상황 증빙(사망진단서, 실직 확인서, 진단서, 화재증명원, 가정폭력 관련 서류 등 사유별)",
+      "금융정보 등 제공 동의서",
+      "소득·재산 확인 서류(사후조사 시)"
+    ],
+    "applyChannel": "읍·면·동 주민센터, 시·군·구청 방문 신청 / 보건복지상담센터 129 전화 / 복지로(bokjiro.go.kr) 안내",
+    "applyHowOneLine": "위기상황 발생 시 보건복지상담센터 129에 전화하거나 가까운 읍·면·동 주민센터·시군구청에 즉시 신청하면 선지원 후 소득·재산을 조사한다.",
+    "applyUrl": "https://www.bokjiro.go.kr",
+    "sources": [
+      {
+        "title": "긴급복지지원 제도 안내",
+        "url": "https://www.mohw.go.kr",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "복지로 - 긴급복지지원",
+        "url": "https://www.bokjiro.go.kr",
+        "publisher": "보건복지부(한국사회보장정보원)",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "긴급복지지원법",
+        "url": "https://www.law.go.kr",
+        "publisher": "법제처 국가법령정보센터",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "보건복지상담센터 129 안내",
+        "url": "https://www.129.go.kr",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "보통 - 위기상황·소득(기준중위소득 75% 이하)·재산 기준은 제도상 확립되어 있으나 연도별 금액·지역별 재산기준은 고시값 재확인 필요(미확인)",
+      "renewal": "보통 - 정기 갱신 없음 및 동일 사유 2년 재신청 제한은 제도 원칙이나 세부 예외는 미확인",
+      "documents": "낮음 - 사유별 증빙이 다양하여 대표 항목만 기재, 정확한 서식·목록은 미확인"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "senior-jobs",
+    "name": "노인일자리 및 사회활동 지원",
+    "agency": "보건복지부 / 한국노인인력개발원, 지자체·수행기관(시니어클럽, 노인복지관, 대한노인회 등)",
+    "summary": "만 65세 이상 어르신에게 공익활동·사회서비스형·시장형사업단·취업알선형 등 다양한 유형의 일자리와 사회활동을 제공해 소득 보충과 사회참여를 지원하는 제도. 유형별로 활동시간·급여·자격요건이 다르다.",
+    "amount": "공익활동형 월 약 29만원(월 30시간 활동 기준), 사회서비스형 월 약 76만원(월 60시간 기준), 시장형·취업알선형은 사업 수익·근로조건에 따라 상이(연도별 고시값 재확인 필요, 미확인).",
+    "rules": {
+      "eligibility": [
+        "age_gte(65)",
+        "basic_pension_recipient() // 공익활동형: 기초연금 수급자 우선",
+        "not_duplicate_with_other_jobs_or_benefits()",
+        "income_or_age_condition_by_type() // 사회서비스형 등 유형별 만 65세 이상(일부 사업 60세 이상)"
+      ],
+      "slots": [
+        "출생연도/만 나이",
+        "기초연금 수급 여부",
+        "희망 일자리 유형(공익활동/사회서비스형/시장형/취업알선형)",
+        "건강보험 직장가입 등 취업·소득 상태",
+        "타 정부 일자리사업·중복 수급 여부",
+        "거주 지역(수행기관)"
+      ]
+    },
+    "renewal": {
+      "type": "annual_reapply",
+      "renewWhen": "연 단위 사업으로 매년 재신청·재선발 필요. 통상 전년도 말~당해 연도 초(11월~2월경)에 차기 연도 참여자 모집. 참여 중에도 매년 모집 기간에 재신청해야 다음 해 계속 참여 가능.",
+      "cutoffTriggers": [
+        "기초연금 수급 자격 상실/변동(공익활동형)",
+        "소득·취업 상태 변동(건강보험 직장가입 등으로 자격 미달)",
+        "타 정부 일자리사업·재정지원 일자리 중복 참여",
+        "연령·자격 요건 미충족",
+        "당해 연도 사업 종료 및 차기 모집 미신청",
+        "활동 기간(공익활동 통상 11개월 등) 만료"
+      ],
+      "note": "노인일자리는 회계연도 단위로 운영되어 매년 새로 모집·선발하는 연 단위 재신청형(annual_reapply) 제도다. 전년도 참여자라도 자동 연장되지 않으며 모집 시기에 반드시 재신청해야 한다. 기초연금 수급 변동·소득 변동 시 자격이 끊길 수 있다."
+    },
+    "deadline": "연 단위 모집. 통상 전년도 말~당해 초(약 11월~2월) 신청, 지자체·수행기관별 모집 일정 상이. 정확한 연도별 모집 마감일은 미확인(수행기관 공고 확인 필요).",
+    "documents": [
+      "신분증(주민등록증 등)",
+      "노인일자리 및 사회활동 참여 신청서",
+      "기초연금 수급 확인 서류(공익활동형 해당 시)",
+      "개인정보 수집·이용 및 자격조회 동의서",
+      "건강 상태·활동 가능 여부 확인 서류(필요 시)"
+    ],
+    "applyChannel": "주민센터·시·군·구청, 시니어클럽·노인복지관·대한노인회 등 수행기관 방문 신청 / 복지로(bokjiro.go.kr) / 노인일자리 여기 누리집 안내",
+    "applyHowOneLine": "매년 모집 기간에 가까운 수행기관(시니어클럽·노인복지관 등)이나 주민센터에 신청서를 제출하면 자격 심사 후 선발된다.",
+    "applyUrl": "https://www.bokjiro.go.kr",
+    "sources": [
+      {
+        "title": "노인일자리 및 사회활동 지원사업",
+        "url": "https://www.mohw.go.kr",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "한국노인인력개발원 - 노인일자리사업 안내",
+        "url": "https://www.kordi.or.kr",
+        "publisher": "한국노인인력개발원",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "복지로 - 노인일자리 및 사회활동 지원",
+        "url": "https://www.bokjiro.go.kr",
+        "publisher": "보건복지부(한국사회보장정보원)",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "보통 - 만 65세 이상·기초연금 수급자 우선(공익활동형)은 제도상 확립되어 있으나 유형별 연령·소득 세부 기준 및 연도값은 미확인",
+      "renewal": "높음 - 회계연도 단위 연 모집·재신청 구조 및 기초연금/소득 변동 시 자격 변동은 제도 원칙으로 명확",
+      "documents": "낮음 - 수행기관별 서식이 달라 대표 항목만 기재, 정확한 목록은 미확인"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "housing-benefit",
+    "name": "주거급여 (맞춤형 급여)",
+    "agency": "국토교통부 (집행) · 보건복지부(선정기준) / LH·지자체 읍면동",
+    "summary": "소득인정액이 기준 중위소득 48% 이하인 가구에 임차료(임차급여) 또는 자가주택 수선비(수선유지급여)를 지원하는 맞춤형 급여. 2021년부터 부양의무자 기준이 폐지되어 신청가구의 소득·재산만으로 판정한다.",
+    "amount": "임차가구: 지역(급지)·가구원수별 기준임대료 한도 내 실제 임차료 지급. 2026년 기준임대료 예시 1인 서울 369,000원~기타지역 212,000원, 4인 서울 571,000원~기타지역 329,000원/월. 자가가구: 수선유지급여 경보수 590만원(3년)·중보수 1,095만원(5년)·대보수 1,601만원(7년 주기).",
+    "rules": {
+      "eligibility": [
+        "household_income_below(median*0.48)",
+        "no_dependent_obligor_test()",
+        "resident_in_eligible_housing(임차 OR 자가)"
+      ],
+      "slots": [
+        "household_size",
+        "monthly_income_recognized(소득인정액)",
+        "region_grade(급지: 서울/경기인천/광역세종특례시/기타)",
+        "tenure(임차 OR 자가)",
+        "actual_rent(실제 월 임차료)",
+        "property_assets(재산)"
+      ]
+    },
+    "renewal": {
+      "type": "annual_review",
+      "renewWhen": "지자체 정기 확인조사(연 1회 내외) 및 소득·재산 변동 발생 시 수시 조사로 자격·급여액 재산정",
+      "cutoffTriggers": [
+        "소득인정액이 기준 중위소득 48% 초과로 상승(취업·임금상승·재산 증가 등)",
+        "가구원수 감소로 선정기준선이 낮아져 기준 초과",
+        "타 지역(낮은 급지)으로 전입하여 기준임대료 한도 하락",
+        "임차→자가 또는 자가→임차 등 점유형태 변경 시 급여 종류·산정 변경",
+        "공공임대 등 별도 주거지원 중복 또는 무상거주 확인 시 지급 제한/축소",
+        "정기 확인조사·금융정보 조회에서 미신고 소득·재산 발견",
+        "사망·전출·세대분리 등 가구 변동 미신고"
+      ],
+      "note": "부양의무자 기준은 폐지되어 부양의무자 소득·재산은 자격에 영향을 주지 않음. 거짓·부정 수급 또는 미신고 변동으로 과지급 시 사후 환수될 수 있음."
+    },
+    "deadline": "상시 신청(연중). 별도 마감 없음.",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "소득·재산 신고서",
+      "금융정보등 제공 동의서",
+      "임대차(전월세) 계약서 또는 사용대차 확인서",
+      "통장 사본",
+      "신분증"
+    ],
+    "applyChannel": "읍면동 행정복지센터 방문 또는 복지로(www.bokjiro.go.kr) 온라인",
+    "applyHowOneLine": "주민등록 주소지 읍면동 행정복지센터를 방문하거나 복지로에서 온라인으로 신청한다.",
+    "applyUrl": "https://www.bokjiro.go.kr",
+    "sources": [
+      {
+        "title": "주거급여 소개 및 선정기준",
+        "url": "https://www.myhome.go.kr/hws/portal/cont/selectHousingBenefitView.do",
+        "publisher": "마이홈포털(국토교통부)",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "2026년도 기준 중위소득 6.51% 역대 최대로 인상 (보도자료)",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1487098&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "복지서비스 상세 - 주거급여(맞춤형 급여)",
+        "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201",
+        "publisher": "복지로(보건복지부)",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "확인",
+      "renewal": "부분확인",
+      "documents": "부분확인"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "medical-benefit",
+    "name": "의료급여",
+    "agency": "보건복지부 / 시·군·구 · 국민건강보험공단(자격관리)·의료급여심사평가",
+    "summary": "기준 중위소득 40% 이하 국민기초생활보장 수급자 등에게 진료비 본인부담을 대폭 경감하는 공공부조형 의료보장 제도. 근로능력 유무 등에 따라 1종·2종으로 구분된다.",
+    "amount": "선정기준 소득인정액(기준 중위소득 40%) 2026년: 1인 1,025,695원, 2인 1,679,717원, 3인 2,143,614원, 4인 2,597,895원, 5인 3,022,688원, 6인 3,422,381원/월 이하. 본인부담: 1종 외래 의원 1,000원·병원 1,500원·상급종합 2,000원·약국 500원, 입원 무료. 2종 외래 의원 1,000원, 병원·상급종합 15%, 입원 10%, 약국 500원.",
+    "rules": {
+      "eligibility": [
+        "household_income_below(median*0.40)",
+        "is_basic_livelihood_or_special_law_recipient()",
+        "classify_type(1종 if 근로무능력가구|중증질환|행려|타법대상 else 2종)"
+      ],
+      "slots": [
+        "household_size",
+        "monthly_income_recognized(소득인정액)",
+        "work_ability(가구원 근로능력 유무)",
+        "registered_severe_disease(중증질환·희귀난치·결핵 등록 여부)",
+        "special_law_status(이재민·국가유공자·북한이탈주민 등 타법대상 여부)",
+        "property_assets(재산)"
+      ]
+    },
+    "renewal": {
+      "type": "annual_review",
+      "renewWhen": "기초생활보장 수급자 정기 확인조사에 연동하여 자격·종별 재산정, 소득·재산·가구 변동 시 수시 조사",
+      "cutoffTriggers": [
+        "소득인정액이 기준 중위소득 40% 초과로 상승하여 수급자격 상실",
+        "근로능력 가구원 발생·구성 변화로 1종→2종 종별 변경(본인부담 증가)",
+        "중증질환·산정특례 등록 종료로 1종 사유 소멸",
+        "타법(국가유공자·이재민 등) 자격 종료",
+        "가구원수 감소로 선정기준선 하락에 따른 기준 초과",
+        "정기 확인조사·금융정보 조회에서 미신고 소득·재산 발견",
+        "건강보험 가입(취업 등)으로 의료급여 자격 자동 상실"
+      ],
+      "note": "2026.1.1.부터 의료급여 부양비 제도(부양의무자가 지원한다고 간주해 소득 반영)가 26년 만에 폐지됨. 다만 고소득·고재산 부양의무자에 대한 예외 적용 가능성은 정부 로드맵상 검토 중(미확인). 부정수급·미신고 변동 시 환수."
+    },
+    "deadline": "상시 신청(연중). 별도 마감 없음.",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "소득·재산 신고서",
+      "금융정보등 제공 동의서",
+      "근로능력 판정 관련 서류(해당 시)",
+      "중증질환·산정특례 등 종별 판정 관련 서류(해당 시)",
+      "신분증"
+    ],
+    "applyChannel": "주민등록 주소지 관할 시·군·구(읍면동 행정복지센터) 연중 신청",
+    "applyHowOneLine": "수급권자 가구원 또는 친족이 주민등록 주소지 관할 시·군·구(읍면동)에 연중 신청한다.",
+    "applyUrl": "https://www.bokjiro.go.kr",
+    "sources": [
+      {
+        "title": "의료급여 (기초의료보장) 정책 안내",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10708030100",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "2026년 기준 중위소득 및 생계·의료급여 선정기준과 최저보장수준 (고시)",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1487112&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "2026년도 기준 중위소득 6.51% 역대 최대로 인상 (보도자료)",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1487098&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "26년 만에 의료급여 부양비 폐지 (보도자료)",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1488173&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "확인",
+      "renewal": "부분확인",
+      "documents": "부분확인"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "senior-care",
+    "name": "노인맞춤돌봄서비스",
+    "agency": "보건복지부 / 시군구·읍면동 (수행기관: 노인복지관·사회복지관 등)",
+    "summary": "일상생활 영위가 어려운 취약 노인에게 안전지원, 사회참여, 생활교육, 일상생활지원 등 맞춤형 돌봄서비스를 제공하는 사업. 사회복지사 등이 상담·조사를 통해 일반돌봄군/중점돌봄군으로 대상자를 선정한다.",
+    "amount": "본인 부담 없음(무료). 서비스 제공량은 선정 결과(일반돌봄군/중점돌봄군)에 따라 차등(예: 중점돌봄군 월 16시간 이상 등). 구체 금액은 사업안내 기준에 따름.",
+    "rules": {
+      "eligibility": [
+        "age_gte(65)",
+        "any_of(basic_livelihood_recipient, near_poor_class, basic_pension_recipient)",
+        "care_need_assessed(독거·조손·고령부부가구 또는 신체·정신적 어려움으로 돌봄 필요)",
+        "not_overlap(장기요양보험·가사간병방문지원 등 유사 중복서비스 수급자 제외)"
+      ],
+      "slots": [
+        "출생연월(만 나이)",
+        "소득자격유형(기초생활수급/차상위/기초연금)",
+        "가구형태(독거·조손·고령부부 등)",
+        "신체·인지·정서 상태(일상생활 어려움 정도)",
+        "현재 수급 중인 유사 돌봄서비스 여부",
+        "주민등록상 주소지(관할 읍면동)"
+      ]
+    },
+    "renewal": {
+      "type": "periodic_recheck",
+      "renewWhen": "선정 후 주기적 재사정(모니터링·욕구재조사)을 통해 대상 적격성 및 돌봄군(일반/중점)을 재확인하며, 소득·건강·가구 변동 시 대상 재선정 절차를 진행한다.",
+      "cutoffTriggers": [
+        "소득·재산 변동으로 자격유형(기초생활/차상위/기초연금) 상실",
+        "건강·신체기능 호전 등으로 돌봄 필요도 미충족(부적격 재판정)",
+        "장기요양보험 등급 인정 등 유사·중복 서비스 수급 개시",
+        "입원·시설입소·사망·전출 등 서비스 제공 불가 사유 발생"
+      ],
+      "note": "재선정 주기·기준의 세부 수치(예: 재사정 정확한 주기)는 연도별 사업안내에 따르며 본 데이터에서는 미확인."
+    },
+    "deadline": "상시 신청(연중). 별도 신청 마감 없음.",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "신청자 신분증",
+      "(대리신청 시) 위임장 및 대리인 신분증, 신청자 신분증"
+    ],
+    "applyChannel": "주민등록상 주소지 읍·면·동 행정복지센터 (방문 원칙) / 전화·우편·팩스 / 온라인(복지로)",
+    "applyHowOneLine": "주소지 읍면동 행정복지센터에 신청서·신분증을 내고 신청하면 사회복지사 상담·조사 후 대상자로 선정됩니다.",
+    "applyUrl": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003191",
+    "sources": [
+      {
+        "title": "복지로 - 노인맞춤돌봄서비스 (복지서비스 상세)",
+        "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003191",
+        "publisher": "보건복지부/복지로(한국사회보장정보원)",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "노인맞춤돌봄서비스 (노인정책)",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10712010400",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "노인맞춤돌봄서비스 신청 (민원안내 및 신청)",
+        "url": "https://www.gov.kr/portal/service/serviceInfo/SSE000000050",
+        "publisher": "정부24(행정안전부)",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "high",
+      "renewal": "medium",
+      "documents": "high"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "ltci",
+    "name": "노인장기요양보험",
+    "agency": "보건복지부 / 국민건강보험공단(장기요양)",
+    "summary": "65세 이상 또는 노인성 질병을 가진 65세 미만인 자로서 6개월 이상 혼자서 일상생활을 수행하기 어려운 자에게 등급판정 후 재가·시설 장기요양급여를 제공하는 사회보험. 등급판정위원회가 심신상태에 따라 1~5등급 및 인지지원등급으로 판정한다.",
+    "amount": "등급 및 급여종류(재가/시설)에 따라 월 한도액 차등 적용. 본인부담률은 시설급여 20%, 재가급여 15%(기초생활수급자 면제, 일부 감경 대상 차등). 구체 한도·비용은 연도별 고시에 따름.",
+    "rules": {
+      "eligibility": [
+        "or(age_gte(65), and(age_lt(65), has_geriatric_disease(치매·뇌혈관성질환 등 노인성 질병)))",
+        "daily_life_difficulty_gte_6months(6개월 이상 혼자 일상생활 수행 곤란)",
+        "ltci_grade_in(1,2,3,4,5,인지지원)"
+      ],
+      "slots": [
+        "출생연월(만 나이)",
+        "노인성 질병 여부(65세 미만인 경우)",
+        "일상생활 수행 곤란 기간 및 정도",
+        "신청구분(신규 인정신청/갱신신청/등급변경신청)",
+        "의사소견서 발급 가능 여부",
+        "현재 보유 등급 및 인정 유효기간 만료일",
+        "주소지 관할 공단 지사(운영센터)"
+      ]
+    },
+    "renewal": {
+      "type": "annual_reapply",
+      "renewWhen": "장기요양인정은 인정 유효기간이 정해져 있으며(최초 인정 2년), 갱신신청 결과 직전과 같은 등급으로 판정되면 1등급 4년, 2~4등급 3년, 5등급·인지지원등급 2년의 유효기간이 적용된다(판정위원회가 6개월 범위 내 가감 가능). 갱신신청은 유효기간 만료 30일 전까지 완료해야 하며, 만료 후에는 급여가 중단되므로 만료 전 갱신신청서·의사소견서를 제출해야 한다.",
+      "cutoffTriggers": [
+        "인정 유효기간 만료 전 갱신신청 미이행(미갱신)으로 자격 종료",
+        "등급판정 변경/하락 또는 '등급외' 판정으로 수급자격 상실",
+        "장기요양보험료 장기 체납 등으로 급여 제한",
+        "수급자 사망·시설 변동·해외 장기체류 등 급여 제공 불가 사유"
+      ],
+      "note": "유효기간(등급별 4/3/2년)은 노인장기요양보험법 시행령 기준. 본인부담률·월 한도액 등 비용 수치는 연도별 고시에 따라 변동하며 본 데이터에서는 일반 기준만 제시."
+    },
+    "deadline": "신규 인정신청은 상시. 갱신신청은 인정 유효기간 만료 30일 전까지 완료.",
+    "documents": [
+      "장기요양인정신청서 (갱신 시: 장기요양인정 갱신신청서 / 등급변경 시: 장기요양등급 변경신청서)",
+      "의사소견서 (등급판정 절차상 필요 시 제출, 공단 통보에 따름)",
+      "신청인 신분증 (대리신청 시 대리인 신분증 및 위임 확인 서류)"
+    ],
+    "applyChannel": "국민건강보험공단 장기요양 지사(운영센터) 방문·우편·팩스 / 인터넷(65세 이상 또는 갱신신청 등) / 유선(갱신신청에 한함)",
+    "applyHowOneLine": "공단 지사에 장기요양인정(또는 갱신)신청서를 내면 방문조사·의사소견서·등급판정위원회를 거쳐 등급이 정해집니다.",
+    "applyUrl": "https://longtermcare.or.kr/npbs/contents/np/e/a/20080421_guide/newGuide.jsp",
+    "sources": [
+      {
+        "title": "장기요양보험 - 서비스 이용절차(인정신청·등급판정·갱신)",
+        "url": "https://longtermcare.or.kr/npbs/contents/np/e/a/20080421_guide/newGuide.jsp",
+        "publisher": "국민건강보험공단(장기요양)",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "노인장기요양보험법 시행령 (인정 유효기간 등)",
+        "url": "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%85%B8%EC%9D%B8%EC%9E%A5%EA%B8%B0%EC%9A%94%EC%96%91%EB%B3%B4%ED%97%98%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9",
+        "publisher": "국가법령정보센터(법제처)",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "노인장기요양보험법 (신청자격·등급판정)",
+        "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=91966",
+        "publisher": "국가법령정보센터(법제처)",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "high",
+      "renewal": "high",
+      "documents": "high"
+    },
+    "sampleData": true
+  }
+]

@@ -1,0 +1,156 @@
+[
+  {
+    "id": "housing-benefit",
+    "name": "주거급여 (맞춤형 급여)",
+    "agency": "국토교통부 (집행) · 보건복지부(선정기준) / LH·지자체 읍면동",
+    "summary": "소득인정액이 기준 중위소득 48% 이하인 가구에 임차료(임차급여) 또는 자가주택 수선비(수선유지급여)를 지원하는 맞춤형 급여. 2021년부터 부양의무자 기준이 폐지되어 신청가구의 소득·재산만으로 판정한다.",
+    "amount": "임차가구: 지역(급지)·가구원수별 기준임대료 한도 내 실제 임차료 지급. 2026년 기준임대료 예시 1인 서울 369,000원~기타지역 212,000원, 4인 서울 571,000원~기타지역 329,000원/월. 자가가구: 수선유지급여 경보수 590만원(3년)·중보수 1,095만원(5년)·대보수 1,601만원(7년 주기).",
+    "rules": {
+      "eligibility": [
+        "household_income_below(median*0.48)",
+        "no_dependent_obligor_test()",
+        "resident_in_eligible_housing(임차 OR 자가)"
+      ],
+      "slots": [
+        "household_size",
+        "monthly_income_recognized(소득인정액)",
+        "region_grade(급지: 서울/경기인천/광역세종특례시/기타)",
+        "tenure(임차 OR 자가)",
+        "actual_rent(실제 월 임차료)",
+        "property_assets(재산)"
+      ]
+    },
+    "renewal": {
+      "type": "annual_review",
+      "renewWhen": "지자체 정기 확인조사(연 1회 내외) 및 소득·재산 변동 발생 시 수시 조사로 자격·급여액 재산정",
+      "cutoffTriggers": [
+        "소득인정액이 기준 중위소득 48% 초과로 상승(취업·임금상승·재산 증가 등)",
+        "가구원수 감소로 선정기준선이 낮아져 기준 초과",
+        "타 지역(낮은 급지)으로 전입하여 기준임대료 한도 하락",
+        "임차→자가 또는 자가→임차 등 점유형태 변경 시 급여 종류·산정 변경",
+        "공공임대 등 별도 주거지원 중복 또는 무상거주 확인 시 지급 제한/축소",
+        "정기 확인조사·금융정보 조회에서 미신고 소득·재산 발견",
+        "사망·전출·세대분리 등 가구 변동 미신고"
+      ],
+      "note": "부양의무자 기준은 폐지되어 부양의무자 소득·재산은 자격에 영향을 주지 않음. 거짓·부정 수급 또는 미신고 변동으로 과지급 시 사후 환수될 수 있음."
+    },
+    "deadline": "상시 신청(연중). 별도 마감 없음.",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "소득·재산 신고서",
+      "금융정보등 제공 동의서",
+      "임대차(전월세) 계약서 또는 사용대차 확인서",
+      "통장 사본",
+      "신분증"
+    ],
+    "applyChannel": "읍면동 행정복지센터 방문 또는 복지로(www.bokjiro.go.kr) 온라인",
+    "applyHowOneLine": "주민등록 주소지 읍면동 행정복지센터를 방문하거나 복지로에서 온라인으로 신청한다.",
+    "applyUrl": "https://www.bokjiro.go.kr",
+    "sources": [
+      {
+        "title": "주거급여 소개 및 선정기준",
+        "url": "https://www.myhome.go.kr/hws/portal/cont/selectHousingBenefitView.do",
+        "publisher": "마이홈포털(국토교통부)",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "2026년도 기준 중위소득 6.51% 역대 최대로 인상 (보도자료)",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1487098&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "복지서비스 상세 - 주거급여(맞춤형 급여)",
+        "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201",
+        "publisher": "복지로(보건복지부)",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "확인",
+      "renewal": "부분확인",
+      "documents": "부분확인"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "medical-benefit",
+    "name": "의료급여",
+    "agency": "보건복지부 / 시·군·구 · 국민건강보험공단(자격관리)·의료급여심사평가",
+    "summary": "기준 중위소득 40% 이하 국민기초생활보장 수급자 등에게 진료비 본인부담을 대폭 경감하는 공공부조형 의료보장 제도. 근로능력 유무 등에 따라 1종·2종으로 구분된다.",
+    "amount": "선정기준 소득인정액(기준 중위소득 40%) 2026년: 1인 1,025,695원, 2인 1,679,717원, 3인 2,143,614원, 4인 2,597,895원, 5인 3,022,688원, 6인 3,422,381원/월 이하. 본인부담: 1종 외래 의원 1,000원·병원 1,500원·상급종합 2,000원·약국 500원, 입원 무료. 2종 외래 의원 1,000원, 병원·상급종합 15%, 입원 10%, 약국 500원.",
+    "rules": {
+      "eligibility": [
+        "household_income_below(median*0.40)",
+        "is_basic_livelihood_or_special_law_recipient()",
+        "classify_type(1종 if 근로무능력가구|중증질환|행려|타법대상 else 2종)"
+      ],
+      "slots": [
+        "household_size",
+        "monthly_income_recognized(소득인정액)",
+        "work_ability(가구원 근로능력 유무)",
+        "registered_severe_disease(중증질환·희귀난치·결핵 등록 여부)",
+        "special_law_status(이재민·국가유공자·북한이탈주민 등 타법대상 여부)",
+        "property_assets(재산)"
+      ]
+    },
+    "renewal": {
+      "type": "annual_review",
+      "renewWhen": "기초생활보장 수급자 정기 확인조사에 연동하여 자격·종별 재산정, 소득·재산·가구 변동 시 수시 조사",
+      "cutoffTriggers": [
+        "소득인정액이 기준 중위소득 40% 초과로 상승하여 수급자격 상실",
+        "근로능력 가구원 발생·구성 변화로 1종→2종 종별 변경(본인부담 증가)",
+        "중증질환·산정특례 등록 종료로 1종 사유 소멸",
+        "타법(국가유공자·이재민 등) 자격 종료",
+        "가구원수 감소로 선정기준선 하락에 따른 기준 초과",
+        "정기 확인조사·금융정보 조회에서 미신고 소득·재산 발견",
+        "건강보험 가입(취업 등)으로 의료급여 자격 자동 상실"
+      ],
+      "note": "2026.1.1.부터 의료급여 부양비 제도(부양의무자가 지원한다고 간주해 소득 반영)가 26년 만에 폐지됨. 다만 고소득·고재산 부양의무자에 대한 예외 적용 가능성은 정부 로드맵상 검토 중(미확인). 부정수급·미신고 변동 시 환수."
+    },
+    "deadline": "상시 신청(연중). 별도 마감 없음.",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "소득·재산 신고서",
+      "금융정보등 제공 동의서",
+      "근로능력 판정 관련 서류(해당 시)",
+      "중증질환·산정특례 등 종별 판정 관련 서류(해당 시)",
+      "신분증"
+    ],
+    "applyChannel": "주민등록 주소지 관할 시·군·구(읍면동 행정복지센터) 연중 신청",
+    "applyHowOneLine": "수급권자 가구원 또는 친족이 주민등록 주소지 관할 시·군·구(읍면동)에 연중 신청한다.",
+    "applyUrl": "https://www.bokjiro.go.kr",
+    "sources": [
+      {
+        "title": "의료급여 (기초의료보장) 정책 안내",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10708030100",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "2026년 기준 중위소득 및 생계·의료급여 선정기준과 최저보장수준 (고시)",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10409020000&bid=0026&list_no=1487112&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "2026년도 기준 중위소득 6.51% 역대 최대로 인상 (보도자료)",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1487098&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "26년 만에 의료급여 부양비 폐지 (보도자료)",
+        "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1488173&act=view",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "확인",
+      "renewal": "부분확인",
+      "documents": "부분확인"
+    },
+    "sampleData": true
+  }
+]

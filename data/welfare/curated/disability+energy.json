@@ -1,0 +1,140 @@
+[
+  {
+    "id": "disability-pension",
+    "name": "장애인연금",
+    "agency": "보건복지부 (신청·접수: 읍·면·동 행정복지센터 / 시·군·구청)",
+    "summary": "근로능력의 상실 또는 현저한 감소로 소득이 줄어든 18세 이상 중증장애인에게 매월 기초급여와 부가급여를 지급하여 생활 안정을 지원하는 공적 연금 제도.",
+    "amount": "2026년 기준 기초급여 월 349,700원(18~64세) + 부가급여 월 30,000원~439,700원(소득계층·연령별 차등). 단독가구 최대 약 월 439,700원.",
+    "rules": {
+      "eligibility": [
+        "age_gte(18)",
+        "registered_disability_severe()",
+        "income_recognized_lte(selection_threshold)",
+        "household_type_in(['single','couple'])"
+      ],
+      "slots": [
+        "birthDate",
+        "disabilityDegree",
+        "householdType",
+        "spouseExists",
+        "monthlyIncome",
+        "propertyValue",
+        "benefitTier"
+      ]
+    },
+    "renewal": {
+      "type": "periodic_recheck",
+      "renewWhen": "신규 신청 후 자동 지급 유지되나, 장애정도 재심사 대상이 되면 국민연금공단 장애심사를 다시 받아야 하며, 소득·재산 변동에 따라 매년 확인조사가 이루어짐.",
+      "cutoffTriggers": [
+        "장애정도 재심사 결과 중증장애인 기준(종전 1·2급 및 3급 중복) 미달로 등급 하락 시 자격 상실",
+        "소득인정액이 선정기준액(2026년 단독 140만원/부부 224만원) 초과 시",
+        "65세 도달 시 기초급여 종료(부가급여는 기초연금 등으로 전환·조정)",
+        "수급자 사망 또는 국외 이주",
+        "거주불명 등록 등 주민등록 말소"
+      ],
+      "note": "별도 재신청 없이 지급이 유지되는 것이 원칙이나, 장애정도 재심사·소득재산 확인조사로 자격이 변동될 수 있음. 65세 도달 시 기초급여가 종료되는 점에 유의."
+    },
+    "deadline": "상시 신청(연중 접수). 신청일 기준으로 자격 판정하므로 별도 마감 없음.",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "신분증",
+      "소득·재산 신고서",
+      "금융정보 등 제공 동의서(본인 및 배우자)",
+      "통장 사본(본인 명의)",
+      "(필요시) 장애정도 심사용 진단서·검사결과 등 의료자료",
+      "(대리신청 시) 위임장 및 대리인 신분증"
+    ],
+    "applyChannel": "읍·면·동 행정복지센터 방문 또는 복지로(bokjiro.go.kr) 온라인 신청",
+    "applyHowOneLine": "주소지 읍·면·동 행정복지센터를 방문하거나 복지로에서 온라인으로 신청하면 약 1개월 내 결정·지급됩니다.",
+    "applyUrl": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do",
+    "sources": [
+      {
+        "title": "장애인연금 개요 - 장애인자립기반",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10710030100",
+        "publisher": "보건복지부",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "「장애인연금법」에 따른 장애인연금 - 찾기쉬운 생활법령정보",
+        "url": "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=916&ccfNo=2&cciNo=2&cnpClsNo=1",
+        "publisher": "법제처 찾기쉬운 생활법령정보",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "high",
+      "renewal": "medium",
+      "documents": "medium"
+    },
+    "sampleData": true
+  },
+  {
+    "id": "energy-voucher",
+    "name": "에너지바우처",
+    "agency": "산업통상자원부 / 한국에너지공단 (신청·접수: 읍·면·동 행정복지센터)",
+    "summary": "에너지 취약계층이 전기·도시가스·지역난방·등유·LPG·연탄 등을 구입할 수 있도록 냉방(하절기)·난방(동절기) 비용을 바우처로 지원하는 연 단위 신청제 사업.",
+    "amount": "2026년도 총 지원금액: 1인 세대 295,200원, 2인 세대 407,500원, 3인 세대 532,700원, 4인 이상 세대 701,300원(하절기+동절기 합산).",
+    "rules": {
+      "eligibility": [
+        "basic_livelihood_recipient_in(['생계급여','의료급여','주거급여','교육급여'])",
+        "household_has_vulnerable_member()",
+        "member_is_elderly_born_on_or_before('1961-12-31') OR member_is_infant_born_on_or_after('2019-01-01') OR member_is_disabled() OR member_is_pregnant() OR member_has_severe_or_rare_disease() OR single_parent_family() OR child_headed_family() OR multichild_household()"
+      ],
+      "slots": [
+        "basicLivelihoodType",
+        "householdSize",
+        "vulnerableMemberType",
+        "memberBirthDate",
+        "existingVoucherEnrolled"
+      ]
+    },
+    "renewal": {
+      "type": "annual_reapply",
+      "renewWhen": "매년 신청 기간(2026년의 경우 6월 15일부터)에 신규·갱신 신청을 해야 함. 신청 기간 내에 신청하지 않으면 해당 연도 지원을 받지 못함(연 단위 신청제).",
+      "cutoffTriggers": [
+        "해당 연도 신청 기간(2026년 6월 15일~12월 31일) 내 미신청 시 그 해 미지원",
+        "기초생활수급 자격(생계·의료·주거·교육급여) 상실 시",
+        "세대 내 세대원 특성 기준(노인·영유아·장애인·임산부 등) 미해당으로 변동 시",
+        "보장시설 입소, 사망, 전출입 등 세대 구성 변동",
+        "사용 기간(2026.7.1~2027.5.31) 경과 시 잔액 소멸"
+      ],
+      "note": "연 단위 신청제로, 매년 신청 기간을 놓치면 그 해 지원을 받을 수 없으므로 반드시 신청 기간 내 접수해야 함. 전년도 수급자도 자격 재확인 대상."
+    },
+    "deadline": "2026년도 신청 마감: 2026년 12월 31일 (사용 기간: 2026.7.1~2027.5.31)",
+    "documents": [
+      "에너지이용권(바우처) 발급 신청서",
+      "신분증",
+      "(대리신청 시) 위임장 및 대리인 신분증",
+      "(세대원 특성 입증 필요시) 장애인등록증·진단서·임신 확인서 등 증빙서류"
+    ],
+    "applyChannel": "읍·면·동 행정복지센터 방문 또는 복지로(bokjiro.go.kr) 온라인 신청",
+    "applyHowOneLine": "신청 기간 내에 주소지 읍·면·동 행정복지센터를 방문하거나 복지로에서 온라인으로 신청하세요(거동 불편 시 대리신청 가능).",
+    "applyUrl": "https://www.energyv.or.kr/info/apl_info.do",
+    "sources": [
+      {
+        "title": "에너지바우처 지원내용",
+        "url": "https://www.energyv.or.kr/info/support_info.do",
+        "publisher": "한국에너지공단 에너지바우처",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "에너지바우처 신청안내",
+        "url": "https://www.energyv.or.kr/info/apl_info.do",
+        "publisher": "한국에너지공단 에너지바우처",
+        "checkedAt": "2026-06-22"
+      },
+      {
+        "title": "복지서비스 상세 - 에너지바우처",
+        "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000072",
+        "publisher": "복지로",
+        "checkedAt": "2026-06-22"
+      }
+    ],
+    "confidence": {
+      "eligibility": "high",
+      "renewal": "high",
+      "documents": "medium"
+    },
+    "sampleData": true
+  }
+]

@@ -1,0 +1,126 @@
+[
+  {
+    "id": "basic-pension",
+    "name": "기초연금",
+    "agency": "보건복지부 (연금정책관 기초연금과); 신청·조사 업무 국민연금공단 위탁",
+    "summary": "만 65세 이상 노인 중 소득인정액이 선정기준액 이하인 하위 70%에게 매월 일정액을 지급하는 노후소득보장 연금.",
+    "amount": "기준연금액(월 최대): 2026년 349,700원, 2025년 342,510원. 선정기준액(소득인정액): 2026년 단독가구 247만원·부부가구 395.2만원, 2025년 단독가구 228만원·부부가구 364.8만원. 부부 모두 수급 시 각자 산정액의 20% 감액. (출처: 보건복지부 보도자료·정부24)",
+    "rules": {
+      "eligibility": [
+        "age_gte(65)",
+        "nationality_is(KR)",
+        "resides_in_country(true)",
+        "income_recognized_below(selectionCriteria)",
+        "selectionCriteria == (household=='single' ? 2470000 : 3952000) // 2026 기준, 단위 원/월",
+        "income_recognized == income_evaluated + asset_converted_income"
+      ],
+      "slots": [
+        "applicantAge",
+        "householdType (단독|부부)",
+        "incomeRecognized",
+        "earnedIncome",
+        "pensionIncome",
+        "generalProperty",
+        "financialAssets",
+        "debt",
+        "isPublicPensioner (공무원·사학·군인연금 수급 시 제외 여부 확인)"
+      ]
+    },
+    "renewal": {
+      "type": "annual_review",
+      "renewWhen": "최초 결정 후 매년 소득인정액 정기 재산정(전국 단위 확인조사). 선정기준액·기준연금액은 매년 보건복지부 장관 고시로 갱신(물가변동률 반영).",
+      "cutoffTriggers": [
+        "소득(근로·연금·사업소득 등) 증가로 소득인정액이 선정기준액 초과",
+        "재산(부동산·금융재산) 증가 또는 부채 감소로 소득환산액 상승 → 소득인정액 초과",
+        "가구 형태 변동: 단독→부부 등 가구 구성 변경으로 적용 선정기준액·산정액 변동",
+        "배우자 소득·재산 변동(부부가구는 합산 산정)",
+        "국외 이주·국적 상실 등 거주·자격요건 상실",
+        "수급자 사망",
+        "미신고 소득·재산이 정기 확인조사·현장조사로 적발"
+      ],
+      "note": "세대구성 등 변동 시 국민연금공단 직원이 현장조사로 확인. 변동 미신고로 과지급된 경우 과오급금 환수 가능. 부정수급 적발 시 지급 정지 및 환수."
+    },
+    "deadline": "상시 신청. 만 65세 생일이 속한 달의 1개월 전부터 신청 가능(신청일이 속한 달분부터 지급).",
+    "documents": [
+      "신분증",
+      "사회복지서비스 및 급여 제공(변경) 신청서",
+      "소득·재산 신고서",
+      "금융정보 등(금융·신용·보험정보) 제공 동의서(본인 및 배우자)",
+      "본인 명의 통장 사본"
+    ],
+    "applyChannel": "읍·면·동 행정복지센터(주민센터), 전국 국민연금공단 지사, 복지로(온라인)",
+    "applyHowOneLine": "주소지 읍·면·동 행정복지센터나 국민연금공단 지사에 방문하거나 복지로에서 온라인 신청.",
+    "applyUrl": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001164",
+    "sources": [
+      {"title": "2026년 노인 단독가구, 소득인정액 월 247만 원 이하면 기초연금 받는다", "url": "https://www.mohw.go.kr/board.es?act=view&bid=0027&list_no=1488478&mid=a10503010100", "publisher": "보건복지부", "checkedAt": "2026-06-22"},
+      {"title": "2025년 노인 단독가구, 소득인정액 월 228만 원 이하면 기초연금 받는다", "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1484197&act=view", "publisher": "보건복지부", "checkedAt": "2026-06-22"},
+      {"title": "기초연금 (민원 안내 및 신청)", "url": "https://www.gov.kr/portal/service/serviceInfo/SSE000000170", "publisher": "정부24", "checkedAt": "2026-06-22"},
+      {"title": "복지서비스 상세(중앙) - 기초연금", "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001164", "publisher": "복지로(보건복지부)", "checkedAt": "2026-06-22"},
+      {"title": "기초연금 지급대상자 선정기준액, 기준연금액 및 소득인정액 산정 세부기준에 관한 고시", "url": "https://www.law.go.kr/LSW//admRulInfoP.do?admRulSeq=2100000253276&chrClsCd=010201", "publisher": "국가법령정보센터", "checkedAt": "2026-06-22"}
+    ],
+    "confidence": {"eligibility": "확인", "renewal": "부분확인", "documents": "확인"},
+    "sampleData": true
+  },
+  {
+    "id": "livelihood-benefit",
+    "name": "생계급여 (국민기초생활보장)",
+    "agency": "보건복지부 (기초생활보장과)",
+    "summary": "소득인정액이 기준 중위소득 32% 이하인 가구에 선정기준액과 소득인정액의 차액을 매월 보충 지급하는 최저생활보장 급여.",
+    "amount": "선정기준액(=급여기준, 기준 중위소득의 32%): 2026년 1인 820,556원·2인 1,343,773원·3인 1,714,892원·4인 2,078,316원 / 2025년 1인 765,444원·2인 1,258,451원·3인 1,608,113원·4인 1,951,287원. 실지급액 = 가구별 선정기준액 − 소득인정액(차액 보충). (출처: 보건복지부 보도자료)",
+    "rules": {
+      "eligibility": [
+        "income_recognized_below(selectionCriteria)",
+        "selectionCriteria == median_income(householdSize) * 0.32",
+        "income_recognized == income_evaluated + asset_converted_income",
+        "income_evaluated == actual_income - work_income_deduction - expense_deduction",
+        "dependent_obligor_rule_applies(false) // 생계급여는 부양의무자 기준 미적용(부양의무자 고소득·고재산 예외 제외)"
+      ],
+      "slots": [
+        "householdSize",
+        "incomeRecognized",
+        "earnedIncome",
+        "businessIncome",
+        "propertyIncome",
+        "generalProperty",
+        "financialAssets",
+        "vehicle",
+        "debt",
+        "rentContractType"
+      ]
+    },
+    "renewal": {
+      "type": "periodic_recheck",
+      "renewWhen": "연 2회 정기 확인조사로 소득·재산 재산정. 기준 중위소득(선정기준액)은 매년 인상 고시.",
+      "cutoffTriggers": [
+        "근로·사업·재산소득 증가로 소득인정액이 선정기준액(중위 32%) 초과",
+        "재산(부동산·금융재산·자동차) 증가 또는 부채 감소로 소득환산액 상승",
+        "가구원 수 변동(가구 분리·합가, 출생·사망)으로 적용 선정기준액 변동",
+        "취업·소득 발생 등 변동사항 미신고가 정기 확인조사로 적발",
+        "자동차 등 재산 은닉 등 부정수급 적발"
+      ],
+      "note": "변동 미신고로 급여가 과지급되면 그 전부 또는 일부가 환수되고 보장이 중지될 수 있으며, 부정수급으로 판정되면 보장중지·급여환수와 함께 고발조치될 수 있음."
+    },
+    "deadline": "상시 신청 (특정 기한 없음).",
+    "documents": [
+      "사회보장급여 신청(변경)서",
+      "신분증",
+      "금융정보 등 제공 동의서(가구원 전체)",
+      "소득·재산 확인 서류",
+      "가족관계증명서",
+      "임대차계약서 등 임대차관계 증빙서류 또는 사용대차 확인서",
+      "본인 명의 통장 사본"
+    ],
+    "applyChannel": "주소지 관할 읍·면·동 행정복지센터(주민센터), 복지로(온라인)",
+    "applyHowOneLine": "주소지 읍·면·동 행정복지센터를 방문 신청하거나 복지로에서 온라인 신청.",
+    "applyUrl": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001132",
+    "sources": [
+      {"title": "2026년도 기준 중위소득 6.51% 역대 최대로 인상", "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1487098&act=view", "publisher": "보건복지부", "checkedAt": "2026-06-22"},
+      {"title": "2025년도 기준 중위소득 6.42%로 역대 최대 인상", "url": "https://www.mohw.go.kr/board.es?mid=a10503000000&bid=0027&list_no=1482430&act=view", "publisher": "보건복지부", "checkedAt": "2026-06-22"},
+      {"title": "수급자선정기준 (기초생활보장)", "url": "https://www.mohw.go.kr/menu.es?mid=a10708010300", "publisher": "보건복지부", "checkedAt": "2026-06-22"},
+      {"title": "복지서비스 상세(중앙) - 생계급여(맞춤형 급여)", "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001132", "publisher": "복지로(보건복지부)", "checkedAt": "2026-06-22"},
+      {"title": "기초생활보장 관리받기 - 수급자격 변동 및 부정수급 처리", "url": "https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=1533&ccfNo=4&cciNo=1&cnpClsNo=2", "publisher": "찾기쉬운 생활법령정보(법제처)", "checkedAt": "2026-06-22"}
+    ],
+    "confidence": {"eligibility": "확인", "renewal": "부분확인", "documents": "확인"},
+    "sampleData": true
+  }
+]
