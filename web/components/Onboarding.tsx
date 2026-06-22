@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import { ScreeningFlow } from '@/components/ScreeningFlow';
-import { CheckForm } from '@/components/CheckForm';
+import { ChangeFlow } from '@/components/ChangeFlow';
 
-// 두 단계 흐름: ① 자격 문진(첫 실행) → ② 끊김 점검(문진에서 받는 혜택을 이어받음).
-export function Onboarding({ benefits }: { benefits: { id: string; name: string }[] }) {
+// 두 단계 흐름: ① 자격 문진(첫 실행) → ② 변동 문진(받는 혜택을 이어받아 끊길 위험 점검).
+export function Onboarding({ benefits: _benefits }: { benefits: { id: string; name: string }[] }) {
   const [phase, setPhase] = useState<'screen' | 'check'>('screen');
-  const [prefill, setPrefill] = useState<string[]>([]);
+  const [receiving, setReceiving] = useState<string[]>([]);
 
   if (phase === 'check') {
     return (
@@ -19,7 +19,7 @@ export function Onboarding({ benefits }: { benefits: { id: string; name: string 
         >
           ← 처음 문진으로
         </button>
-        <CheckForm benefits={benefits} initialPicked={prefill} />
+        <ChangeFlow receivingBenefits={receiving} />
       </div>
     );
   }
@@ -27,7 +27,7 @@ export function Onboarding({ benefits }: { benefits: { id: string; name: string 
   return (
     <ScreeningFlow
       onContinue={(ids) => {
-        setPrefill(ids);
+        setReceiving(ids);
         setPhase('check');
       }}
     />
