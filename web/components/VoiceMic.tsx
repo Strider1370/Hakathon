@@ -19,11 +19,12 @@ export function VoiceMic({
   const [msg, setMsg] = useState('');
   const [chat, setChat] = useState<ChatMsg[]>([]);
   const sessionRef = useRef<{ close?: () => void } | null>(null);
-  const chatEndRef = useRef<HTMLDivElement | null>(null);
+  const chatBoxRef = useRef<HTMLDivElement | null>(null);
 
-  // 새 말풍선이 오면 맨 아래로 스크롤
+  // 새 말풍선이 오면 '말풍선 박스 내부'만 아래로 스크롤(페이지는 안 움직이게).
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = chatBoxRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
   }, [chat]);
 
   async function start() {
@@ -79,7 +80,7 @@ export function VoiceMic({
         tools: [setAnswer, finish],
       });
 
-      const session = new RealtimeSession(agent, { model: tok.model || 'gpt-realtime' });
+      const session = new RealtimeSession(agent, { model: tok.model || 'gpt-realtime-2' });
       sessionRef.current = session as unknown as { close?: () => void };
 
       // 대화 이력(음성 전사)을 말풍선으로 — 도우미·사용자 발화를 텍스트로 표시.
@@ -158,7 +159,7 @@ export function VoiceMic({
       {status === 'error' && <p className="py-1 text-body-m text-danger-60">{msg}</p>}
 
       {chat.length > 0 && (
-        <div className="mt-3 max-h-72 space-y-2 overflow-y-auto rounded-krds bg-white p-3">
+        <div ref={chatBoxRef} className="mt-3 max-h-72 space-y-2 overflow-y-auto rounded-krds bg-white p-3">
           {chat.map((m) =>
             m.role === 'user' ? (
               <div key={m.id} className="flex justify-end">
@@ -175,7 +176,6 @@ export function VoiceMic({
               </div>
             ),
           )}
-          <div ref={chatEndRef} />
         </div>
       )}
     </div>

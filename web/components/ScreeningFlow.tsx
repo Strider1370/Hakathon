@@ -47,9 +47,12 @@ export function ScreeningFlow({
   }
 
   // 음성 도우미가 채운 답을 같은 프로필에 반영(판정은 동일하게 코드가).
+  // 화면의 탭 질문도 다음 미응답 질문으로 따라 이동.
   function applyVoice(id: string, value: string) {
     profileRef.current = { ...profileRef.current, [id]: value };
     setProfile({ ...profileRef.current });
+    const nextIdx = QUESTIONS.findIndex((qq) => profileRef.current[qq.id] === undefined);
+    setStep(nextIdx === -1 ? QUESTIONS.length - 1 : nextIdx);
   }
   function voiceFinish() {
     submit(profileRef.current);

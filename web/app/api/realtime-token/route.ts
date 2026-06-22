@@ -9,7 +9,9 @@ export async function POST() {
   const key = process.env.OPENAI_API_KEY;
   if (!key) return NextResponse.json({ value: null, provider: 'fallback' });
 
-  const model = process.env.OPENAI_REALTIME_MODEL || 'gpt-realtime';
+  // GPT-5급 추론 realtime(2026-05). 전사는 신규 스트리밍 STT. env로 교체 가능.
+  const model = process.env.OPENAI_REALTIME_MODEL || 'gpt-realtime-2';
+  const transcribeModel = process.env.OPENAI_TRANSCRIBE_MODEL || 'gpt-realtime-whisper';
   try {
     const res = await fetch('https://api.openai.com/v1/realtime/client_secrets', {
       method: 'POST',
@@ -19,7 +21,11 @@ export async function POST() {
           type: 'realtime',
           model,
           audio: {
-            input: { transcription: { model: 'gpt-4o-mini-transcribe' } }, // 사용자 음성도 텍스트로
+            input: {
+              transcription: { model: transcribeModel, language: 'ko' }, // 사용자 음성→텍스트(한국어)
+              turn_detection: { type: 'semantic_vad', eagerness: 'low' }, // 어르신: 머뭇거려도 안 끊김
+              noise_reduction: { type: 'near_field' }, // 폰·헤드셋 잡음 감소
+            },
             output: { voice: 'marin' },
           },
         },
